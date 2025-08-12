@@ -1,36 +1,77 @@
 import React from "react";
-import Hotspot from "@/components/Hotspot";
+import ClickableItem from "@/components/ClickableItem";
 
 const MakeoverRoom: React.FC = () => {
   return (
-    <div className="relative w-full max-w-5xl mx-auto rounded-xl overflow-hidden shadow-elegant">
-      <img
-        src="/lovable-uploads/386e83b9-e99a-40f3-b739-5f8de5b0dec3.png"
-        alt="Makeover room illustration used as interactive navigation for the portfolio"
-        loading="eager"
-        className="w-full h-auto block"
+    <div
+      className="relative w-full min-h-[100vh] mx-auto overflow-hidden"
+      style={{
+        backgroundImage: "url('/lovable-uploads/386e83b9-e99a-40f3-b739-5f8de5b0dec3.png')",
+        backgroundSize: "cover",
+        backgroundPosition: "center",
+        backgroundRepeat: "no-repeat",
+      }}
+      aria-label="Interactive makeover room backdrop"
+    >
+      {/* Vanity & mirror (About) */}
+      <ClickableItem
+        label="About Me"
+        description="Learn more about my story and approach."
+        src="/lovable-uploads/9f1b0fa2-f699-4bad-9cd1-faba16bc7231.png"
+        alt="Vanity with ornate mirror"
+        position={{ top: "58%", left: "18%" }}
+        width="24%"
       />
 
-      {/* Left vanity + mirror */}
-      <Hotspot label="About Me" anchor="about" position={{ top: "48%", left: "17%" }} description="Learn more about my story and approach." />
-      <Hotspot label="Skills" anchor="skills" position={{ top: "35%", left: "23%" }} description="Techniques, tools and specialties." />
+      {/* Center dress (Gallery) */}
+      <ClickableItem
+        label="Gallery"
+        description="Signature looks and transformations."
+        src="/lovable-uploads/216f52d3-355a-4ba0-b89c-05e2a9c2e2d3.png"
+        alt="Pink layered gown on dress form"
+        position={{ top: "56%", left: "48%" }}
+        width="18%"
+      />
 
-      {/* Center window + dress */}
-      <Hotspot label="Gallery" anchor="gallery" position={{ top: "56%", left: "50%" }} description="Signature looks and case studies." />
-      <Hotspot label="Testimonials" anchor="testimonials" position={{ top: "78%", left: "50%" }} description="What my clients say." />
+      {/* Mannequins (Projects) */}
+      <ClickableItem
+        label="Projects"
+        description="Recent collaborations and highlights."
+        src="/lovable-uploads/1e989d95-3a75-44ba-8870-bd6f60efe3b9.png"
+        alt="Two mannequins with gowns"
+        position={{ top: "60%", left: "62%" }}
+        width="18%"
+      />
 
-      {/* Right shelf + mannequins + sofa */}
-      <Hotspot label="Services" anchor="services" position={{ top: "44%", left: "77%" }} description="Styling, makeup and consultations." />
-      <Hotspot label="Projects" anchor="projects" position={{ top: "60%", left: "86%" }} description="Recent collaborations." />
-      <Hotspot label="Contact" anchor="contact" position={{ top: "72%", left: "74%" }} description="Get in touch for bookings." />
-      <Hotspot label="Quote" anchor="contact" position={{ top: "86%", left: "74%" }} description="Request a quote or package." />
+      {/* Accessory shelf (Services) */}
+      <ClickableItem
+        label="Services"
+        description="Styling, makeup and consultations."
+        src="/lovable-uploads/da074ed4-4c66-4d8f-94ab-9fb9a8b5e60a.png"
+        alt="Shelf with jewelry, handbag and heels"
+        position={{ top: "36%", left: "82%" }}
+        width="10%"
+      />
 
-      {/* Ceiling and lights */}
-      <Hotspot label="Blog" anchor="blog" position={{ top: "10%", left: "50%" }} description="Thoughts and tips." />
-      <Hotspot label="Lighting" anchor="services" position={{ top: "22%", left: "35%" }} />
-      <Hotspot label="Lighting" anchor="services" position={{ top: "22%", left: "64%" }} />
-      <Hotspot label="Chandelier" anchor="gallery" position={{ top: "10%", left: "12%" }} />
-      <Hotspot label="Chandelier" anchor="gallery" position={{ top: "10%", left: "88%" }} />
+      {/* Sofa + gifts (Contact / Quote) */}
+      <ClickableItem
+        label="Contact"
+        description="Get in touch for bookings and quotes."
+        src="/lovable-uploads/ded061bb-efb7-4dd0-b170-9ae276947301.png"
+        alt="Sofa with table, flowers, gifts and heels"
+        position={{ top: "76%", left: "74%" }}
+        width="26%"
+      />
+
+      {/* Sofa corner (Testimonials) */}
+      <ClickableItem
+        label="Testimonials"
+        description="Kind words from clients."
+        src="/lovable-uploads/6abae027-e442-429f-a277-24fb1fae0b5c.png"
+        alt="Sofa corner with cushion"
+        position={{ top: "82%", left: "10%" }}
+        width="12%"
+      />
     </div>
   );
 };
