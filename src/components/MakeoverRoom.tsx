@@ -27,10 +27,10 @@ const MakeoverRoom: React.FC = () => {
       <ClickableItem
         label="Gallery"
         description="Signature looks and transformations."
-        src="/lovable-uploads/216f52d3-355a-4ba0-b89c-05e2a9c2e2d3.png"
+        src="/lovable-uploads/mannequin_div.svg"
         alt="Pink layered gown on dress form"
         position={{ top: "56%", left: "48%" }}
-        width="18%"
+        width="50%"
       />
 
       {/* Mannequins (Projects) */}
