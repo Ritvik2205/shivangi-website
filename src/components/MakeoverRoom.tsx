@@ -1,16 +1,43 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import ClickableItem from "@/components/ClickableItem";
 
 const MakeoverRoom: React.FC = () => {
   const [isDarkMode, setIsDarkMode] = useState(false);
+  const [viewportHeight, setViewportHeight] = useState(window.innerHeight);
 
   const toggleBackground = () => {
     setIsDarkMode(!isDarkMode);
   };
 
+  // Update viewport height on resize
+  useEffect(() => {
+    const handleResize = () => {
+      setViewportHeight(window.innerHeight);
+    };
+
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
   const backgroundImage = isDarkMode 
     ? "url('/lovable-uploads/sv_bg_dark.svg')" 
     : "url('/lovable-uploads/room_bg.svg')";
+
+  // Calculate responsive sizes based on viewport height
+  const getResponsiveSize = (baseSize: string, isHeight: boolean = false) => {
+    const baseValue = parseFloat(baseSize);
+    const heightRatio = viewportHeight / 900; // 900px as baseline height
+    
+    if (isHeight) {
+      // For height, scale more aggressively
+      const adjustedValue = baseValue * Math.min(heightRatio, 1.5);
+      return `${adjustedValue}%`;
+    } else {
+      // For width, scale more conservatively
+      const adjustedValue = baseValue * Math.min(heightRatio, 1.3);
+      return `${adjustedValue}%`;
+    }
+  };
 
   return (
     <div
@@ -20,6 +47,7 @@ const MakeoverRoom: React.FC = () => {
         backgroundSize: "cover",
         backgroundPosition: "center",
         backgroundRepeat: "no-repeat",
+        height: `${viewportHeight}px`,
       }}
       aria-label="Interactive makeover room backdrop"
     >
@@ -29,9 +57,9 @@ const MakeoverRoom: React.FC = () => {
         description="Learn more about my story and approach."
         src="/lovable-uploads/vanity_div.svg"
         alt="Vanity with ornate mirror"
-        position={{ top: "20%", left: "2%" }}
-        width="25%"
-        height="25%"
+        position={{ top: "20%", left: "0" }}
+        width={getResponsiveSize("23%")}
+        height={getResponsiveSize("23%", true)}
         route="/about"
       />
 
@@ -40,9 +68,9 @@ const MakeoverRoom: React.FC = () => {
         description="Discover the foundation pieces for your perfect wardrobe"
         src="/lovable-uploads/coat_hanger.svg"
         alt="Coat hanger"
-        position={{ top: "27%", left: "26%" }}
-        width="8%"
-        height="8%"
+        position={{ top: "23%", left: "25%" }}
+        width={getResponsiveSize("8%")}
+        height={getResponsiveSize("8%", true)}
         route="/coat-hanger"
       />
 
@@ -52,9 +80,9 @@ const MakeoverRoom: React.FC = () => {
         description="Signature looks and transformations."
         src="/lovable-uploads/center_mannequin.svg"
         alt="Pink layered gown on dress form"
-        position={{ top: "35%", left: "50%", transform: true }}
-        width="30%"
-        height="30%"
+        position={{ top: "33%", left: "50%", transform: true }}
+        width={getResponsiveSize("27%")}
+        height={getResponsiveSize("27%", true)}
         route="/gallery"
       />
 
@@ -64,8 +92,8 @@ const MakeoverRoom: React.FC = () => {
         style={{ 
           top: "6%", 
           left: "50%", 
-          width: "10%", 
-          height: "10%", 
+          width: getResponsiveSize("10%"), 
+          height: getResponsiveSize("10%", true), 
           transform: "translate(-50%, -50%)" 
         }}
       >
@@ -92,8 +120,8 @@ const MakeoverRoom: React.FC = () => {
         src="/lovable-uploads/bouquet.svg"
         alt="Bouquet"
         position={{ top: "15%", left: "50%", transform: true }}
-        width="6%"
-        height="6%"
+        width={getResponsiveSize("6%")}
+        height={getResponsiveSize("6%", true)}
         route="/"
       />
 
@@ -104,8 +132,8 @@ const MakeoverRoom: React.FC = () => {
         src="/lovable-uploads/side_mannequins.svg"
         alt="Two mannequins with gowns"
         position={{ top: "22%", right: "0" }}
-        width="28%"
-        height="28%"
+        width={getResponsiveSize("25%")}
+        height={getResponsiveSize("25%", true)}
         route="/projects"
       />
 
@@ -116,7 +144,8 @@ const MakeoverRoom: React.FC = () => {
         src="/lovable-uploads/cabinet.svg"
         alt="Shelf with jewelry, handbag and heels"
         position={{ top: "22%", right: "23%" }}
-        width="10%"
+        width={getResponsiveSize("9%")}
+        height={getResponsiveSize("9%", true)}
         route="/services"
       />
 
@@ -127,7 +156,8 @@ const MakeoverRoom: React.FC = () => {
         src="/lovable-uploads/sofa.svg"
         alt="Sofa with table, flowers, gifts and heels"
         position={{ top: "45%", right: "0" }}
-        width="32%"
+        width={getResponsiveSize("28%")}
+        height={getResponsiveSize("28%", true)}
         route="/contact"
       />
 
@@ -138,17 +168,20 @@ const MakeoverRoom: React.FC = () => {
         src="/lovable-uploads/chair.svg"
         alt="Sofa corner with cushion"
         position={{ top: "62%", left: "0" }}
-        width="15%"
+        width={getResponsiveSize("13%")}
+        height={getResponsiveSize("13%", true)}
         route="/testimonials"
       />
 
+      {/* Rug (Rug Pull) */}
       <ClickableItem
         label="Reveal Treasures"
         description="Discover hidden gems and exclusive offers"
         src="/lovable-uploads/rug.svg"
         alt="Rug with hidden treasures"
         position={{ top: "90%", left: "50%", transform: true }}
-        width="35%"
+        width={getResponsiveSize("30%")}
+        height={getResponsiveSize("30%", true)}
         route="/rug-pull"
       />
     </div>
