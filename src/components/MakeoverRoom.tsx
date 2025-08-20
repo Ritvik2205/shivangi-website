@@ -1,12 +1,22 @@
-import React from "react";
+import React, { useState } from "react";
 import ClickableItem from "@/components/ClickableItem";
 
 const MakeoverRoom: React.FC = () => {
+  const [isDarkMode, setIsDarkMode] = useState(false);
+
+  const toggleBackground = () => {
+    setIsDarkMode(!isDarkMode);
+  };
+
+  const backgroundImage = isDarkMode 
+    ? "url('/lovable-uploads/sv_bg_dark.svg')" 
+    : "url('/lovable-uploads/room_bg.svg')";
+
   return (
     <div
       className="relative w-full min-h-[100vh] mx-auto overflow-hidden"
       style={{
-        backgroundImage: "url('/lovable-uploads/room_bg.svg')",
+        backgroundImage: backgroundImage,
         backgroundSize: "cover",
         backgroundPosition: "center",
         backgroundRepeat: "no-repeat",
@@ -48,12 +58,40 @@ const MakeoverRoom: React.FC = () => {
         route="/gallery"
       />
 
+      {/* Clock - Background Toggle */}
+      <div
+        className="absolute"
+        style={{ 
+          top: "6%", 
+          left: "50%", 
+          width: "10%", 
+          height: "10%", 
+          transform: "translate(-50%, -50%)" 
+        }}
+      >
+        <button
+          type="button"
+          aria-label="Toggle background theme"
+          onClick={toggleBackground}
+          className="w-full h-full group relative block rounded-lg focus:outline-none focus-visible:ring-2 focus-visible:ring-primary/60 hover:scale-[1.02] transition-transform duration-200 flex items-center justify-center"
+          title={isDarkMode ? "Switch to light mode" : "Switch to dark mode"}
+        >
+          <img
+            src="/lovable-uploads/clock.svg"
+            alt="Clock"
+            loading="lazy"
+            className="w-full h-full object-contain select-none pointer-events-none drop-shadow-md"
+          />
+          <span className="sr-only">Toggle background theme</span>
+        </button>
+      </div>
+
       <ClickableItem
-        label="Time is Money"
-        description="Efficient styling services that respect your schedule"
-        src="/lovable-uploads/clock.svg"
-        alt="Clock"
-        position={{ top: "5%", left: "50%", transform: true }}
+        label="Bouquet"
+        description="bouquet"
+        src="/lovable-uploads/bouquet.svg"
+        alt="Bouquet"
+        position={{ top: "15%", left: "50%", transform: true }}
         width="6%"
         height="6%"
         route="/"
