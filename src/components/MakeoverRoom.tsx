@@ -7,8 +7,8 @@ const MakeoverRoom: React.FC = () => {
   const [scale, setScale] = useState(1);
 
   // Base design resolution (keeps relative layout consistent)
-  const BASE_WIDTH = 1920;
-  const BASE_HEIGHT = 1080;
+  const BASE_WIDTH = 1670;
+  const BASE_HEIGHT = 1000;
 
   const toggleBackground = () => {
     setIsDarkMode(!isDarkMode);
@@ -92,9 +92,9 @@ const MakeoverRoom: React.FC = () => {
         description="Window"
         src={windowImage}
         alt="Window"
-        position={{ top: "33%", left: "50%", transform: true }}
-        width={getResponsiveSize("30%")}
-        height={getResponsiveSize("30%")}
+        position={{ top: "36%", left: "50%", transform: true }}
+        width={getResponsiveSize("32%")}
+        height={getResponsiveSize("32%")}
         route="/"
         disableDropShadow={true}
         zIndex={2}
@@ -178,7 +178,7 @@ const MakeoverRoom: React.FC = () => {
         description="Learn more about my story and approach."
         src="/lovable-uploads/vanity_div.svg"
         alt="Vanity with ornate mirror"
-        position={{ top: "20%", left: "0" }}
+        position={{ top: "27%", left: "0" }}
         width={getResponsiveSize("23%")}
         height={getResponsiveSize("23%")}
         route="/about"
@@ -190,7 +190,7 @@ const MakeoverRoom: React.FC = () => {
         description="Discover the foundation pieces for your perfect wardrobe"
         src="/lovable-uploads/coat_hanger.svg"
         alt="Coat hanger"
-        position={{ top: "23%", left: "25%" }}
+        position={{ top: "30%", left: "25%" }}
         width={getResponsiveSize("8%")}
         height={getResponsiveSize("8%")}
         route="/coat-hanger"
@@ -202,9 +202,9 @@ const MakeoverRoom: React.FC = () => {
         description="Signature looks and transformations."
         src="/lovable-uploads/center_mannequin.svg"
         alt="Pink layered gown on dress form"
-        position={{ top: "33%", left: "50%", transform: true }}
-        width={getResponsiveSize("27%")}
-        height={getResponsiveSize("27%")}
+        position={{ top: "37%", left: "50%", transform: true }}
+        width={getResponsiveSize("30%")}
+        height={getResponsiveSize("30%")}
         route="/gallery"
         zIndex={3}
       />
@@ -213,7 +213,7 @@ const MakeoverRoom: React.FC = () => {
       <div
         className="absolute"
         style={{ 
-          top: "6%", 
+          top: "8%", 
           left: "50%", 
           width: getResponsiveSize("10%"), 
           height: getResponsiveSize("10%"), 
@@ -242,7 +242,7 @@ const MakeoverRoom: React.FC = () => {
         description="bouquet"
         src="/lovable-uploads/bouquet.svg"
         alt="Bouquet"
-        position={{ top: "15%", left: "50%", transform: true }}
+        position={{ top: "18%", left: "50%", transform: true }}
         width={getResponsiveSize("6%")}
         height={getResponsiveSize("6%")}
         route="/"
@@ -255,7 +255,7 @@ const MakeoverRoom: React.FC = () => {
         description="Recent collaborations and highlights."
         src="/lovable-uploads/side_mannequins.svg"
         alt="Two mannequins with gowns"
-        position={{ top: "22%", right: "0" }}
+        position={{ top: "28%", right: "0" }}
         width={getResponsiveSize("25%")}
         height={getResponsiveSize("25%")}
         route="/projects"
@@ -267,7 +267,7 @@ const MakeoverRoom: React.FC = () => {
         description="Styling, makeup and consultations."
         src="/lovable-uploads/cabinet.svg"
         alt="Shelf with jewelry, handbag and heels"
-        position={{ top: "22%", right: "23%" }}
+        position={{ top: "27%", right: "23%" }}
         width={getResponsiveSize("9%")}
         height={getResponsiveSize("9%")}
         route="/services"
@@ -279,7 +279,7 @@ const MakeoverRoom: React.FC = () => {
         description="Get in touch for bookings and quotes."
         src="/lovable-uploads/sofa.svg"
         alt="Sofa with table, flowers, gifts and heels"
-        position={{ top: "45%", right: "0" }}
+        position={{ top: "50%", right: "0" }}
         width={getResponsiveSize("28%")}
         height={getResponsiveSize("28%")}
         route="/contact"
@@ -291,7 +291,7 @@ const MakeoverRoom: React.FC = () => {
         description="Kind words from clients."
         src="/lovable-uploads/chair.svg"
         alt="Sofa corner with cushion"
-        position={{ top: "62%", left: "0" }}
+        position={{ top: "67%", left: "0" }}
         width={getResponsiveSize("13%")}
         height={getResponsiveSize("13%")}
         route="/testimonials"
@@ -303,7 +303,7 @@ const MakeoverRoom: React.FC = () => {
         description="Discover hidden gems and exclusive offers"
         src="/lovable-uploads/rug.svg"
         alt="Rug with hidden treasures"
-        position={{ top: "90%", left: "50%", transform: true }}
+        position={{ top: "91%", left: "50%", transform: true }}
         width={getResponsiveSize("30%")}
         height={getResponsiveSize("30%")}
         route="/rug-pull"
