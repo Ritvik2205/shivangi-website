@@ -19,14 +19,22 @@ const MakeoverRoom: React.FC = () => {
     return () => window.removeEventListener('resize', handleResize);
   }, []);
 
-  const backgroundImage = isDarkMode 
-    ? "url('/lovable-uploads/sv_bg_dark.svg')" 
-    : "url('/lovable-uploads/room_bg.svg')";
+  const backgroundColor = isDarkMode 
+    ? "#946355" 
+    : "#F2C6B8";
+
+  const matColor = isDarkMode 
+    ? "#48261B" 
+    : "#A46352";
+
+  const windowImage = isDarkMode 
+    ? "/lovable-uploads/window_dark.svg" 
+    : "/lovable-uploads/window.svg";
 
   // Calculate responsive sizes based on viewport height
   const getResponsiveSize = (baseSize: string, isHeight: boolean = false) => {
     const baseValue = parseFloat(baseSize);
-    const heightRatio = viewportHeight / 900; // 900px as baseline height
+    const heightRatio = viewportHeight / 950; // 900px as baseline height
     
     if (isHeight) {
       // For height, scale more aggressively
@@ -34,7 +42,7 @@ const MakeoverRoom: React.FC = () => {
       return `${adjustedValue}%`;
     } else {
       // For width, scale more conservatively
-      const adjustedValue = baseValue * Math.min(heightRatio, 1.3);
+      const adjustedValue = baseValue * Math.min(heightRatio, 1.5);
       return `${adjustedValue}%`;
     }
   };
@@ -43,7 +51,7 @@ const MakeoverRoom: React.FC = () => {
     <div
       className="relative w-full min-h-[100vh] mx-auto overflow-hidden"
       style={{
-        backgroundImage: backgroundImage,
+        backgroundColor: backgroundColor,
         backgroundSize: "cover",
         backgroundPosition: "center",
         backgroundRepeat: "no-repeat",
@@ -51,6 +59,101 @@ const MakeoverRoom: React.FC = () => {
       }}
       aria-label="Interactive makeover room backdrop"
     >
+
+    <div 
+      className="absolute bottom-0 left-0 w-full" 
+      style={{ 
+        backgroundColor: matColor,
+        height: getResponsiveSize("32%", true)
+      }} 
+    />
+
+      {/* Window */}
+      <ClickableItem
+        label="Window"
+        description="Window"
+        src={windowImage}
+        alt="Window"
+        position={{ top: "33%", left: "50%", transform: true }}
+        width={getResponsiveSize("30%")}
+        height={getResponsiveSize("30%", true)}
+        route="/"
+        disableDropShadow={true}
+        zIndex={2}
+      />
+
+      {/* 2 Chandeliers */}
+      <ClickableItem
+        label="Chandelier"
+        description="Chandelier"
+        src="/lovable-uploads/chandelier.svg"
+        alt="Chandelier"
+        position={{ top: "0", left: "5%" }}
+        width={getResponsiveSize("7%")}
+        height={getResponsiveSize("7%", true)}
+        route="/"
+        disableDropShadow={true}
+      />
+      <ClickableItem
+        label="Chandelier"
+        description="Chandelier"
+        src="/lovable-uploads/chandelier.svg"
+        alt="Chandelier"
+        position={{ top: "0", right: "5%" }}
+        width={getResponsiveSize("7%")}
+        height={getResponsiveSize("7%", true)}
+        route="/"
+        disableDropShadow={true}
+      />
+
+      {/* 4 top lights */}
+      <ClickableItem
+        label="Left Outer Light"
+        description="Left Outer Light"
+        src="/lovable-uploads/top_light.svg"
+        alt="Light"
+        position={{ top: "0", left: "20%" }}
+        width={getResponsiveSize("4%")}
+        height={getResponsiveSize("4%", true)}
+        route="/"
+        disableDropShadow={true}
+      />
+             <ClickableItem
+         label="Left Inner Light"
+         description="Left Inner Light"
+         src="/lovable-uploads/top_light.svg"
+         alt="Light"
+         position={{ top: "-10%", left: "35%" }}
+         width={getResponsiveSize("4%")}
+         height={getResponsiveSize("4%", true)}
+         route="/"
+         disableDropShadow={true}
+         zIndex={1}
+       />
+       <ClickableItem
+         label="Right Inner Light"
+         description="Right Inner Light"
+         src="/lovable-uploads/top_light.svg"
+         alt="Light"
+         position={{ top: "-10%", right: "35%" }}
+         width={getResponsiveSize("4%")}
+         height={getResponsiveSize("4%", true)}
+         route="/"
+         disableDropShadow={true}
+         zIndex={1}
+       />
+      <ClickableItem
+        label="Right Outer Light"
+        description="Right Outer Light"
+        src="/lovable-uploads/top_light.svg"
+        alt="Light"
+        position={{ top: "0", right: "20%" }}
+        width={getResponsiveSize("4%")}
+        height={getResponsiveSize("4%", true)}
+        route="/"
+        disableDropShadow={true}
+      />
+
       {/* Vanity & mirror (About) */}
       <ClickableItem
         label="About Me"
@@ -63,6 +166,7 @@ const MakeoverRoom: React.FC = () => {
         route="/about"
       />
 
+      {/* Coat hanger */}
       <ClickableItem
         label="Wardrobe Essentials"
         description="Discover the foundation pieces for your perfect wardrobe"
@@ -84,6 +188,7 @@ const MakeoverRoom: React.FC = () => {
         width={getResponsiveSize("27%")}
         height={getResponsiveSize("27%", true)}
         route="/gallery"
+        zIndex={3}
       />
 
       {/* Clock - Background Toggle */}
@@ -123,6 +228,7 @@ const MakeoverRoom: React.FC = () => {
         width={getResponsiveSize("6%")}
         height={getResponsiveSize("6%", true)}
         route="/"
+        zIndex={3}
       />
 
       {/* Mannequins (Projects) */}

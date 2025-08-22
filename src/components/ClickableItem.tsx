@@ -12,9 +12,11 @@ interface ClickableItemProps {
   height?: string; // e.g., "18%"
   description?: string;
   route: string; // route to navigate to when clicked
+  disableDropShadow?: boolean; // disable drop shadow on the image
+  zIndex?: number; // custom z-index for layering
 }
 
-const ClickableItem: React.FC<ClickableItemProps> = ({ label, src, alt, position, width = "18%", height = "18%", description, route }) => {
+const ClickableItem: React.FC<ClickableItemProps> = ({ label, src, alt, position, width = "18%", height = "18%", description, route, disableDropShadow = false, zIndex }) => {
   const navigate = useNavigate();
 
   const handleClick = () => {
@@ -24,7 +26,16 @@ const ClickableItem: React.FC<ClickableItemProps> = ({ label, src, alt, position
   return (
     <div
       className="absolute"
-      style={{ top: position.top, left: position.left, right: position.right, bottom: position.bottom, width, height, transform: position.transform ? "translate(-50%, -50%)" : "none" }}
+      style={{ 
+        top: position.top, 
+        left: position.left, 
+        right: position.right, 
+        bottom: position.bottom, 
+        width, 
+        height, 
+        transform: position.transform ? "translate(-50%, -50%)" : "none",
+        zIndex: zIndex
+      }}
     >
       <button
         type="button"
@@ -37,7 +48,7 @@ const ClickableItem: React.FC<ClickableItemProps> = ({ label, src, alt, position
           src={src}
           alt={alt}
           loading="lazy"
-          className="w-full h-auto select-none pointer-events-none drop-shadow-md"
+          className={`w-full h-auto select-none pointer-events-none ${!disableDropShadow ? 'drop-shadow-md' : ''}`}
         />
         <span className="sr-only">{label}</span>
       </button>
