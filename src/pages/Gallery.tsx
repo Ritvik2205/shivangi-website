@@ -25,28 +25,29 @@ const Gallery = () => {
 
   return (
     <div className="min-h-screen bg-[#F2C6B8]">
-      <div className="container mx-auto px-4 py-8">
-        <div className="max-w-6xl mx-auto">
-          <Link to="/">
-            <Button variant="ghost" className="mb-6">
-              <ArrowLeft className="mr-2 h-4 w-4" />
-              Back to Room
-            </Button>
-          </Link>
-          
-          {/* Fixed-design scene wrapper that scales uniformly */}
-          <div
-            className="relative"
-            style={{
-              width: `${BASE_WIDTH}px`,
-              height: `${BASE_HEIGHT}px`,
-              position: "absolute",
-              top: 0,
-              left: "50%",
-              transform: `translateX(-50%) scale(${scale})`,
-              transformOrigin: "top center",
-            }}
-          >
+              <div className="container mx-auto px-4 py-8 relative">
+          <div className="max-w-6xl mx-auto">
+            <Link to="/" className="relative z-[100]">
+              <Button variant="ghost" className="mb-6">
+                <ArrowLeft className="mr-2 h-4 w-4" />
+                Back to Room
+              </Button>
+            </Link>
+            
+            {/* Fixed-design scene wrapper that scales uniformly */}
+            <div
+              className="relative"
+              style={{
+                width: `${BASE_WIDTH}px`,
+                height: `${BASE_HEIGHT}px`,
+                position: "absolute",
+                top: 0,
+                left: "50%",
+                transform: `translateX(-50%) scale(${scale})`,
+                transformOrigin: "top center",
+                zIndex: 1,
+              }}
+            >
 
           <div 
             className="absolute bottom-0 left-0 w-full" 
