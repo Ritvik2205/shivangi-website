@@ -14,13 +14,16 @@ interface ClickableItemProps {
   route: string; // route to navigate to when clicked
   disableDropShadow?: boolean; // disable drop shadow on the image
   zIndex?: number; // custom z-index for layering
+  disabled?: boolean; // make the component non-clickable
 }
 
-const ClickableItem: React.FC<ClickableItemProps> = ({ label, src, alt, position, width = "18%", height = "18%", description, route, disableDropShadow = false, zIndex }) => {
+const ClickableItem: React.FC<ClickableItemProps> = ({ label, src, alt, position, width = "18%", height = "18%", description, route, disableDropShadow = false, zIndex, disabled = false }) => {
   const navigate = useNavigate();
 
   const handleClick = () => {
-    navigate(route);
+    if (!disabled) {
+      navigate(route);
+    }
   };
 
   return (
@@ -41,8 +44,13 @@ const ClickableItem: React.FC<ClickableItemProps> = ({ label, src, alt, position
         type="button"
         aria-label={label}
         onClick={handleClick}
-        className="w-full h-full group relative block rounded-lg focus:outline-none focus-visible:ring-2 focus-visible:ring-primary/60 hover:scale-[1.02] transition-transform duration-200"
-        title={description}
+        disabled={disabled}
+        className={`w-full h-full group relative block rounded-lg focus:outline-none focus-visible:ring-2 focus-visible:ring-primary/60 transition-transform duration-200 ${
+          disabled 
+            ? 'cursor-default' 
+            : 'hover:scale-[1.02]'
+        }`}
+        title={disabled ? undefined : description}
       >
         <img
           src={src}

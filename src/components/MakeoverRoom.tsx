@@ -237,7 +237,7 @@ const MakeoverRoom: React.FC = () => {
         </button>
       </div>
 
-        <ClickableItem
+      <ClickableItem
         label="Bouquet"
         description="bouquet"
         src="/lovable-uploads/bouquet.svg"
@@ -270,7 +270,7 @@ const MakeoverRoom: React.FC = () => {
         position={{ top: "27%", right: "23%" }}
         width={getResponsiveSize("9%")}
         height={getResponsiveSize("9%")}
-        route="/services"
+        route="/extracurriculars"
       />
 
         {/* Sofa + gifts (Contact / Quote) */}
@@ -282,7 +282,8 @@ const MakeoverRoom: React.FC = () => {
         position={{ top: "50%", right: "0" }}
         width={getResponsiveSize("28%")}
         height={getResponsiveSize("28%")}
-        route="/contact"
+        route="/"
+        disabled={true}
       />
 
         {/* Sofa corner (Testimonials) */}
@@ -294,7 +295,7 @@ const MakeoverRoom: React.FC = () => {
         position={{ top: "67%", left: "0" }}
         width={getResponsiveSize("13%")}
         height={getResponsiveSize("13%")}
-        route="/testimonials"
+        route="/projects"
       />
 
         {/* Rug (Rug Pull) */}
@@ -306,7 +307,7 @@ const MakeoverRoom: React.FC = () => {
         position={{ top: "91%", left: "50%", transform: true }}
         width={getResponsiveSize("30%")}
         height={getResponsiveSize("30%")}
-        route="/rug-pull"
+        route="/contact"
       />
 
       </div>
