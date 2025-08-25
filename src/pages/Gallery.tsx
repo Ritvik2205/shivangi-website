@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button";
 import { ArrowLeft } from "lucide-react";
 import PopupItem from "@/components/PopupItem";
 import Popup from "@/components/ui/popup";
+import { imageCache } from "@/utils/imageCache";
 
 const Gallery = () => {
   const [scale, setScale] = useState(1);
@@ -56,6 +57,24 @@ const Gallery = () => {
   const closePopup = () => {
     setPopupData(prev => ({ ...prev, isOpen: false }));
   };
+
+  // Preload and cache critical images on component mount
+  useEffect(() => {
+    const criticalImages = [
+      "/lovable-uploads/wardrobe.svg",
+      "/lovable-uploads/wardrobe/dress_black.svg",
+      "/lovable-uploads/wardrobe/dress_white.svg",
+      "/lovable-uploads/wardrobe/coat_grey.svg",
+      "/lovable-uploads/wardrobe/coat_blue.svg"
+    ];
+
+    // Preload images in background
+    imageCache.preloadImages(criticalImages).then((results) => {
+      console.log(`Cached ${results.size} images for Gallery page`);
+    }).catch((error) => {
+      console.warn('Failed to preload some images:', error);
+    });
+  }, []);
 
   return (
     <div className="min-h-screen bg-[#F2C6B8]">

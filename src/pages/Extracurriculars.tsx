@@ -1,9 +1,10 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { ArrowLeft, Scissors, Palette, Camera, Star, Users, Sparkles } from "lucide-react";
 import PopupItem from "@/components/PopupItem";
 import Popup from "@/components/ui/popup";
+import { imageCache } from "@/utils/imageCache";
 
 const Extracurriculars = () => {
   const [popupData, setPopupData] = useState<{
@@ -38,6 +39,30 @@ const Extracurriculars = () => {
   const closePopup = () => {
     setPopupData(prev => ({ ...prev, isOpen: false }));
   };
+
+  // Preload and cache critical images on component mount
+  useEffect(() => {
+    const criticalImages = [
+      "/lovable-uploads/shelf.svg",
+      "/lovable-uploads/extracurricular_shelf/writing.svg",
+      "/lovable-uploads/extracurricular_shelf/chess.svg",
+      "/lovable-uploads/extracurricular_shelf/basketball.svg",
+      "/lovable-uploads/extracurricular_shelf/cooking.svg",
+      "/lovable-uploads/extracurricular_shelf/debate.svg",
+      "/lovable-uploads/extracurricular_shelf/crafts.svg",
+      "/lovable-uploads/extracurricular_shelf/travel.svg",
+      "/lovable-uploads/extracurricular_shelf/hiking.svg",
+      "/lovable-uploads/extracurricular_shelf/company.svg",
+      "/lovable-uploads/extracurricular_shelf/trophy.svg"
+    ];
+
+    // Preload images in background
+    imageCache.preloadImages(criticalImages).then((results) => {
+      console.log(`Cached ${results.size} images for Extracurriculars page`);
+    }).catch((error) => {
+      console.warn('Failed to preload some images:', error);
+    });
+  }, []);
 
   const services = [
     {

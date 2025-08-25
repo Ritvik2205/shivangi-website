@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
+import { imageCache } from "@/utils/imageCache";
 
 type Position = { top?: string; left?: string; right?: string; bottom?: string; transform?: boolean };
 
@@ -29,6 +30,48 @@ const PopupItem: React.FC<PopupItemProps> = ({
   zIndex, 
   disabled = false 
 }) => {
+  const [imageSrc, setImageSrc] = useState<string>(src);
+  const [isLoading, setIsLoading] = useState(true);
+  const [isCached, setIsCached] = useState(false);
+
+  useEffect(() => {
+    let isMounted = true;
+
+    const loadCachedImage = async () => {
+      try {
+        // Check if image is already cached
+        if (imageCache.isCached(src)) {
+          const cachedSrc = imageCache.getCachedImage(src);
+          if (cachedSrc && isMounted) {
+            setImageSrc(cachedSrc);
+            setIsCached(true);
+            setIsLoading(false);
+            return;
+          }
+        }
+
+        // Load and cache the image
+        const dataUrl = await imageCache.preloadImage(src);
+        if (isMounted) {
+          setImageSrc(dataUrl);
+          setIsCached(false);
+          setIsLoading(false);
+        }
+      } catch (error) {
+        console.warn(`Failed to load cached image: ${src}`, error);
+        if (isMounted) {
+          setIsLoading(false);
+        }
+      }
+    };
+
+    loadCachedImage();
+
+    return () => {
+      isMounted = false;
+    };
+  }, [src]);
+
   const handleClick = () => {
     if (!disabled) {
       onOpenPopup();
@@ -61,11 +104,23 @@ const PopupItem: React.FC<PopupItemProps> = ({
         }`}
         title={disabled ? undefined : description}
       >
+        {isLoading && (
+          <div className="w-full h-full bg-gray-200 animate-pulse rounded-lg flex items-center justify-center">
+            <div className="w-6 h-6 border-2 border-gray-400 border-t-transparent rounded-full animate-spin"></div>
+          </div>
+        )}
+        
         <img
-          src={src}
+          src={imageSrc}
           alt={alt}
           loading="lazy"
-          className={`w-full h-auto select-none pointer-events-none ${!disableDropShadow ? 'drop-shadow-md' : ''}`}
+          className={`w-full h-auto select-none pointer-events-none transition-opacity duration-300 ${
+            !disableDropShadow ? 'drop-shadow-md' : ''
+          } ${isCached ? 'cached-image' : ''}`}
+          style={{ 
+            opacity: isLoading ? 0 : 1,
+            display: isLoading ? 'none' : 'block'
+          }}
         />
         <span className="sr-only">{label}</span>
       </button>
