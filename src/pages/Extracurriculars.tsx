@@ -1,7 +1,7 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
-import { ArrowLeft, Scissors, Palette, Camera, Star, Users, Sparkles } from "lucide-react";
+import { ArrowLeft } from "lucide-react";
 import PopupItem from "@/components/PopupItem";
 import Popup from "@/components/ui/popup";
 
@@ -36,50 +36,160 @@ const Extracurriculars = () => {
     setPopupData(prev => ({ ...prev, isOpen: false }));
   };
 
-  const services = [
-    {
-      icon: <Scissors className="h-8 w-8" />,
-      title: "Personal Styling",
-      description: "Complete wardrobe transformation and personal style development tailored to your lifestyle and preferences.",
-      features: ["Wardrobe audit", "Personal shopping", "Style consultation", "Outfit coordination"],
-      price: "From $150"
+  type Position = { top?: string; left?: string; right?: string; bottom?: string; transform?: boolean };
+  type Entry = {
+    title: string;
+    details?: string[];
+    subsections?: Array<{
+      organization: string;
+      role?: string;
+      details?: string[];
+    }>;
+  };
+
+  const [entries, setEntries] = useState<Entry[]>([]);
+  const [isLoading, setIsLoading] = useState<boolean>(false);
+
+  useEffect(() => {
+    let isMounted = true;
+    const load = async () => {
+      try {
+        setIsLoading(true);
+        const res = await fetch("/Content/Extracurriculars.json", { cache: "no-store" });
+        if (!res.ok) throw new Error(`Failed to load Extracurriculars.json: ${res.status}`);
+        const data: Entry[] = await res.json();
+        if (isMounted) setEntries(Array.isArray(data) ? data : []);
+      } catch (err) {
+        console.error(err);
+        if (isMounted) setEntries([]);
+      } finally {
+        if (isMounted) setIsLoading(false);
+      }
+    };
+    load();
+    return () => {
+      isMounted = false;
+    };
+  }, []);
+
+  const layoutConfig: Record<string, { label: string; src: string; alt: string; position: Position; width: string; height: string; zIndex?: number; imageFolder: string }>
+    = {
+    "Writing & Creative Work": {
+      label: "Writing & Creative Work",
+      src: "/lovable-uploads/extracurricular_shelf/writing.svg",
+      alt: "Writing",
+      position: { top: "27%", right: "6%", transform: true },
+      width: "12%",
+      height: "12%",
+      zIndex: 20,
+      imageFolder: "writing"
     },
-    {
-      icon: <Palette className="h-8 w-8" />,
-      title: "Makeup Artistry",
-      description: "Professional makeup services for special occasions, photoshoots, and everyday glamour.",
-      features: ["Bridal makeup", "Event makeup", "Photoshoot makeup", "Makeup lessons"],
-      price: "From $100"
+    "Chess": {
+      label: "Chess",
+      src: "/lovable-uploads/extracurricular_shelf/chess.svg",
+      alt: "Chess",
+      position: { top: "10%", left: "63%", transform: true },
+      width: "12%",
+      height: "12%",
+      zIndex: 20,
+      imageFolder: "chess"
     },
-    {
-      icon: <Camera className="h-8 w-8" />,
-      title: "Photo Styling",
-      description: "Complete styling and makeup for professional photoshoots, social media content, and portfolios.",
-      features: ["Outfit selection", "Hair and makeup", "Pose guidance", "Location coordination"],
-      price: "From $200"
+    "Basketball": {
+      label: "Basketball",
+      src: "/lovable-uploads/extracurricular_shelf/basketball.svg",
+      alt: "Basketball",
+      position: { top: "14%", left: "25.5%", transform: true },
+      width: "12%",
+      height: "12%",
+      zIndex: 20,
+      imageFolder: "basketball"
     },
-    {
-      icon: <Star className="h-8 w-8" />,
-      title: "Special Events",
-      description: "Comprehensive beauty and styling services for weddings, parties, and important life moments.",
-      features: ["Wedding styling", "Party preparation", "VIP events", "Celebrity styling"],
-      price: "From $300"
+    "Cooking": {
+      label: "Cooking",
+      src: "/lovable-uploads/extracurricular_shelf/cooking.svg",
+      alt: "Cooking",
+      position: { bottom: "18%", right: "11%", transform: true },
+      width: "12%",
+      height: "12%",
+      zIndex: 20,
+      imageFolder: "cooking"
     },
-    {
-      icon: <Users className="h-8 w-8" />,
-      title: "Group Sessions",
-      description: "Styling and makeup services for bridal parties, corporate events, and group celebrations.",
-      features: ["Bridal party styling", "Corporate events", "Group consultations", "Team building"],
-      price: "From $75/person"
+    "Debate": {
+      label: "Debate",
+      src: "/lovable-uploads/extracurricular_shelf/debate.svg",
+      alt: "Debate",
+      position: { top: "29%", left: "17.5%", transform: true },
+      width: "12%",
+      height: "12%",
+      zIndex: 20,
+      imageFolder: "debate"
     },
-    {
-      icon: <Sparkles className="h-8 w-8" />,
-      title: "Ongoing Coaching",
-      description: "Long-term style development and beauty coaching to help you maintain confidence and style.",
-      features: ["Monthly check-ins", "Style updates", "Trend guidance", "Confidence building"],
-      price: "From $75/month"
+    "Crafts & Creativity": {
+      label: "Crafts & Creativity",
+      src: "/lovable-uploads/extracurricular_shelf/crafts.svg",
+      alt: "Crafts",
+      position: { top: "45%", right: "6.5%", transform: true },
+      width: "13%",
+      height: "13%",
+      zIndex: 20,
+      imageFolder: "crafts"
+    },
+    "Travelling": {
+      label: "Travel",
+      src: "/lovable-uploads/extracurricular_shelf/travel.svg",
+      alt: "Travel",
+      position: { top: "25%", left: "46.5%", transform: true },
+      width: "11%",
+      height: "11%",
+      zIndex: 20,
+      imageFolder: "travelling"
+    },
+    "Hiking": {
+      label: "Hiking",
+      src: "/lovable-uploads/extracurricular_shelf/hiking.svg",
+      alt: "Hiking",
+      position: { top: "47%", left: "57.5%", transform: true },
+      width: "12%",
+      height: "12%",
+      zIndex: 20,
+      imageFolder: "hiking"
+    },
+    "Leadership & Social Impact": {
+      label: "Leadership & Social Impact",
+      src: "/lovable-uploads/extracurricular_shelf/company.svg",
+      alt: "Leadership & Social Impact",
+      position: { bottom: "32%", left: "19.5%", transform: true },
+      width: "13%",
+      height: "13%",
+      zIndex: 20,
+      imageFolder: "leadership"
+    },
+    "Achievements & Awards": {
+      label: "Achievements & Awards",
+      src: "/lovable-uploads/extracurricular_shelf/trophy.svg",
+      alt: "Achievements & Awards",
+      position: { top: "67%", left: "38%", transform: true },
+      width: "11%",
+      height: "11%",
+      zIndex: 20,
+      imageFolder: "awards"
     }
-  ];
+  };
+
+  const buildDescription = (entry: Entry): string => {
+    if (entry.subsections && entry.subsections.length > 0) {
+      const blocks = entry.subsections.map((s) => {
+        const header = `${s.organization}${s.role ? " — " + s.role : ""}`;
+        const detailLines = (s.details || []).map(d => `- ${d}`).join("\n");
+        return detailLines ? `${header}\n${detailLines}` : header;
+      });
+      return blocks.join("\n\n");
+    }
+    if (entry.details && entry.details.length > 0) {
+      return entry.details.map(d => `- ${d}`).join("\n");
+    }
+    return "";
+  };
 
   return (
     <div className="min-h-screen bg-[#5B4444]">
@@ -102,178 +212,29 @@ const Extracurriculars = () => {
               
               {/* Clickable Extracurricular Items positioned over the shelf */}
               <div className="absolute top-0 left-0 w-full h-full">
-                {/* Row 1 - Top Shelf */}
-                <PopupItem
-                  label="Writing"
-                  src="/lovable-uploads/extracurricular_shelf/writing.svg"
-                  alt="Writing"
-                  position={{ top: "27%", right: "6%", transform: true }}
-                  width="12%"
-                  height="12%"
-                  description="Creative writing and storytelling"
-                  onOpenPopup={() => openPopup({
-                    title: "Creative Writing",
-                    description: "Passionate about storytelling and creative expression through writing. I enjoy crafting narratives, poetry, and exploring different writing styles to communicate ideas effectively.",
-                    imageFolder: "dummy",
-                    imageAlt: "Writing"
-                  })}
-                  zIndex={20}
-                />
-                
-                <PopupItem
-                  label="Chess"
-                  src="/lovable-uploads/extracurricular_shelf/chess.svg"
-                  alt="Chess"
-                  position={{ top: "10%", left: "63%", transform: true }}
-                  width="12%"
-                  height="12%"
-                  description="Strategic thinking and chess"
-                  onOpenPopup={() => openPopup({
-                    title: "Chess Strategy",
-                    description: "Dedicated chess player who enjoys the strategic depth and mental challenges of the game. Chess has taught me patience, planning, and the importance of thinking several moves ahead.",
-                    imageFolder: "dummy",
-                    imageAlt: "Chess"
-                  })}
-                  zIndex={20}
-                />
-                
-                <PopupItem
-                  label="Basketball"
-                  src="/lovable-uploads/extracurricular_shelf/basketball.svg"
-                  alt="Basketball"
-                  position={{ top: "14%", left: "25.5%", transform: true }}
-                  width="12%"
-                  height="12%"
-                  description="Team sports and basketball"
-                  onOpenPopup={() => openPopup({
-                    title: "Basketball",
-                    description: "Active basketball player who values teamwork, coordination, and physical fitness. The sport has helped me develop leadership skills and the ability to work effectively in team environments.",
-                    imageFolder: "dummy",
-                    imageAlt: "Basketball"
-                  })}
-                  zIndex={20}
-                />
-                
-                <PopupItem
-                  label="Cooking"
-                  src="/lovable-uploads/extracurricular_shelf/cooking.svg"
-                  alt="Cooking"
-                  position={{ bottom: "18%", right: "11%", transform: true }}
-                  width="12%"
-                  height="12%"
-                  description="Culinary arts and cooking"
-                  onOpenPopup={() => openPopup({
-                    title: "Culinary Arts",
-                    description: "Passionate home chef who loves experimenting with flavors and techniques. Cooking is both a creative outlet and a way to bring people together through shared meals and experiences.",
-                    imageFolder: "extracurricular_shelf",
-                    imageAlt: "Cooking"
-                  })}
-                  zIndex={20}
-                />
-                
-                {/* Row 2 - Middle Shelf */}
-                <PopupItem
-                  label="Debate"
-                  src="/lovable-uploads/extracurricular_shelf/debate.svg"
-                  alt="Debate"
-                  position={{ top: "29%", left: "17.5%", transform: true }}
-                  width="12%"
-                  height="12%"
-                  description="Public speaking and debate"
-                  onOpenPopup={() => openPopup({
-                    title: "Public Speaking & Debate",
-                    description: "Experienced debater and public speaker who enjoys engaging in intellectual discourse and presenting compelling arguments. This activity has sharpened my critical thinking and communication skills.",
-                    imageFolder: "dummy",
-                    imageAlt: "Debate"
-                  })}
-                  zIndex={20}
-                />
-                
-                <PopupItem
-                  label="Crafts"
-                  src="/lovable-uploads/extracurricular_shelf/crafts.svg"
-                  alt="Crafts"
-                  position={{ top: "45%", right: "6.5%", transform: true }}
-                  width="13%"
-                  height="13%"
-                  description="Arts and crafts"
-                  onOpenPopup={() => openPopup({
-                    title: "Arts & Crafts",
-                    description: "Creative artist who enjoys working with various materials and techniques. From painting to DIY projects, crafting allows me to express creativity and create unique, handmade pieces.",
-                    imageFolder: "dummy",
-                    imageAlt: "Crafts"
-                  })}
-                  zIndex={20}
-                />
-                
-                <PopupItem
-                  label="Travel"
-                  src="/lovable-uploads/extracurricular_shelf/travel.svg"
-                  alt="Travel"
-                  position={{ top: "25%", left: "46.5%", transform: true }}
-                  width="11%"
-                  height="11%"
-                  description="Travel and exploration"
-                  onOpenPopup={() => openPopup({
-                    title: "Travel & Exploration",
-                    description: "Avid traveler who loves exploring new cultures, landscapes, and experiences. Travel has broadened my perspective and taught me adaptability, cultural sensitivity, and appreciation for diversity.",
-                    imageFolder: "dummy",
-                    imageAlt: "Travel"
-                  })}
-                  zIndex={20}
-                />
-                
-                <PopupItem
-                  label="Hiking"
-                  src="/lovable-uploads/extracurricular_shelf/hiking.svg"
-                  alt="Hiking"
-                  position={{ top: "47%", left: "57.5%", transform: true }}
-                  width="12%"
-                  height="12%"
-                  description="Outdoor adventures and hiking"
-                  onOpenPopup={() => openPopup({
-                    title: "Hiking & Outdoor Adventures",
-                    description: "Nature enthusiast who finds peace and challenge in outdoor activities. Hiking has taught me perseverance, appreciation for nature, and the importance of physical and mental resilience.",
-                    imageFolder: "dummy",
-                    imageAlt: "Hiking"
-                  })}
-                  zIndex={20}
-                />
-                
-                {/* Row 3 - Bottom Shelf */}
-                <PopupItem
-                  label="Company"
-                  src="/lovable-uploads/extracurricular_shelf/company.svg"
-                  alt="Company"
-                  position={{ bottom: "32%", left: "19.5%", transform: true }}
-                  width="13%"
-                  height="13%"
-                  description="Business and entrepreneurship"
-                  onOpenPopup={() => openPopup({
-                    title: "Entrepreneurship & Business",
-                    description: "Entrepreneurial spirit with experience in business development and leadership. I enjoy building connections, solving problems, and creating value through innovative business solutions.",
-                    imageFolder: "dummy",
-                    imageAlt: "Company"
-                  })}
-                  zIndex={20}
-                />
-                
-                <PopupItem
-                  label="Trophy"
-                  src="/lovable-uploads/extracurricular_shelf/trophy.svg"
-                  alt="Trophy"
-                  position={{ top: "67%", left: "38%", transform: true }}
-                  width="11%"
-                  height="11%"
-                  description="Achievements and awards"
-                  onOpenPopup={() => openPopup({
-                    title: "Achievements & Awards",
-                    description: "Proud recipient of various awards and recognitions for academic excellence, leadership, and community contributions. These achievements reflect my commitment to continuous improvement and making a positive impact.",
-                    imageFolder: "dummy",
-                    imageAlt: "Trophy"
-                  })}
-                  zIndex={20}
-                />
+                {entries.map((entry) => {
+                  const cfg = layoutConfig[entry.title];
+                  if (!cfg) return null;
+                  return (
+                    <PopupItem
+                      key={entry.title}
+                      label={cfg.label}
+                      src={cfg.src}
+                      alt={cfg.alt}
+                      position={cfg.position}
+                      width={cfg.width}
+                      height={cfg.height}
+                      description={entry.details && entry.details.length > 0 ? entry.details[0] : undefined}
+                      onOpenPopup={() => openPopup({
+                        title: entry.title,
+                        description: buildDescription(entry),
+                        imageFolder: cfg.imageFolder,
+                        imageAlt: cfg.alt
+                      })}
+                      zIndex={cfg.zIndex}
+                    />
+                  );
+                })}
               </div>
             </div>
           </div>

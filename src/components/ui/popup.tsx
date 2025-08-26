@@ -41,7 +41,52 @@ const IMAGE_FOLDERS: Record<string, string[]> = {
     "/lovable-uploads/rug.svg",
     "/lovable-uploads/chair.svg",
     "/lovable-uploads/coat_hanger.svg"
-  ]
+  ],
+  // Extracurriculars galleries
+  basketball: [
+    "/lovable-uploads/extracurriculars/basketball/IMG_0502%20(1).jpeg",
+    "/lovable-uploads/extracurriculars/basketball/IMG_1017.jpeg",
+    "/lovable-uploads/extracurriculars/basketball/IMG_1402.jpeg",
+    "/lovable-uploads/extracurriculars/basketball/IMG_20180810_094954.jpg"
+  ],
+  debate: [
+    "/lovable-uploads/extracurriculars/debate/national%20camp.png"
+  ],
+  chess: [
+    "/lovable-uploads/extracurriculars/chess/IMG_9528.jpeg"
+  ],
+  leadership: [
+    "/lovable-uploads/extracurriculars/leadership/1.png",
+    "/lovable-uploads/extracurriculars/leadership/2.png",
+    "/lovable-uploads/extracurriculars/leadership/3.png",
+    "/lovable-uploads/extracurriculars/leadership/4.png",
+    "/lovable-uploads/extracurriculars/leadership/5.png"
+  ],
+  cooking: [
+    "/lovable-uploads/extracurriculars/cooking/IMG_1017.jpeg",
+    "/lovable-uploads/extracurriculars/cooking/IMG_1405.png",
+    "/lovable-uploads/extracurriculars/cooking/IMG_1406.png",
+    "/lovable-uploads/extracurriculars/cooking/IMG_1407.png",
+    "/lovable-uploads/extracurriculars/cooking/IMG_1408.png"
+  ],
+  crafts: [
+    "/lovable-uploads/extracurriculars/crafts/IMG_1400.png",
+    "/lovable-uploads/extracurriculars/crafts/IMG_20181215_181534.jpg",
+    "/lovable-uploads/extracurriculars/crafts/OTSH3938.JPG"
+  ],
+  hiking: [
+    "/lovable-uploads/extracurriculars/hiking/IMG_8931%20(1).jpeg"
+  ],
+  travelling: [
+    "/lovable-uploads/extracurriculars/travelling/1.png",
+    "/lovable-uploads/extracurriculars/travelling/2.png",
+    "/lovable-uploads/extracurriculars/travelling/3.png",
+    "/lovable-uploads/extracurriculars/travelling/4.png"
+  ],
+  awards: [
+    "/lovable-uploads/extracurriculars/awards/edinburgh%20award.png"
+  ],
+  writing: []
 };
 
 const Popup: React.FC<PopupProps> = ({
@@ -275,7 +320,7 @@ const Popup: React.FC<PopupProps> = ({
 
           {/* Description Text Block */}
           <div className="bg-gray-50 rounded-[20px] p-6 flex-1 opacity-80">
-            <p className="text-lg text-gray-600 leading-relaxed">
+            <p className="text-lg text-gray-600 leading-relaxed whitespace-pre-line">
               {description}
             </p>
           </div>
