@@ -1,6 +1,4 @@
-{
-  "journey": "My Journey Beyond the Classroom",
-  "sections": [
+[
     {
       "title": "Basketball",
       "content": "Basketball has been part of my life for over ten years — it started in school, where I trained and competed seriously, and has stayed with me as my go-to detox and stress reliever. At school, I played competitively on the team for five years, captained our U-14 side to a silver medal at the R.A. Devi Memorial Cup, and helped secure a 3rd place finish at the South Bangalore state clusters. I also represented MNKR and JSC clubs at the championship level, collecting medals and lifelong memories.\n\nBut beyond the wins and tournaments, basketball gave me something more valuable: meaningful friendships and a community that always felt like family. At Edinburgh, I’ve carried this passion forward as a member of the Women’s 3s — the official university basketball team, competing in the Scottish National League, BUCS, and Scottish Student Sports tournaments. No matter how stressful the week gets, time on the court clears my mind. Basketball has taught me resilience, teamwork, and the importance of showing up for the people around you — lessons I take with me far beyond the game."
@@ -41,5 +39,5 @@
       "title": "Crafts & Creativity",
       "content": "Crafts are my favorite way of bringing imagination to life. I love making personalized, handmade gifts — from 3D cake pop-ups to explosion boxes, foldable cards, and delicate ballerina cutouts. Each project feels like building a little world out of paper, colors, and creativity. For me, crafting is about joy — the joy of creating something unique and the joy of giving it to someone who’ll treasure it."
     }
-  ]
-}
+  
+]
