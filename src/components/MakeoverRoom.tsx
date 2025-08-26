@@ -98,6 +98,7 @@ const MakeoverRoom: React.FC = () => {
         route="/"
         disableDropShadow={true}
         zIndex={2}
+        disabled={true}
       />
 
         {/* 2 Chandeliers */}
@@ -111,6 +112,7 @@ const MakeoverRoom: React.FC = () => {
         height={getResponsiveSize("7%")}
         route="/"
         disableDropShadow={true}
+        disabled={true}
       />
       <ClickableItem
         label="Chandelier"
@@ -122,6 +124,7 @@ const MakeoverRoom: React.FC = () => {
         height={getResponsiveSize("7%")}
         route="/"
         disableDropShadow={true}
+        disabled={true}
       />
 
         {/* 4 top lights */}
@@ -135,6 +138,7 @@ const MakeoverRoom: React.FC = () => {
         height={getResponsiveSize("4%")}
         route="/"
         disableDropShadow={true}
+        disabled={true}
       />
       <ClickableItem
          label="Left Inner Light"
@@ -147,6 +151,7 @@ const MakeoverRoom: React.FC = () => {
          route="/"
          disableDropShadow={true}
          zIndex={1}
+         disabled={true}
        />
        <ClickableItem
          label="Right Inner Light"
@@ -159,6 +164,7 @@ const MakeoverRoom: React.FC = () => {
          route="/"
          disableDropShadow={true}
          zIndex={1}
+         disabled={true}
        />
       <ClickableItem
         label="Right Outer Light"
@@ -170,6 +176,7 @@ const MakeoverRoom: React.FC = () => {
         height={getResponsiveSize("4%")}
         route="/"
         disableDropShadow={true}
+        disabled={true}
       />
 
         {/* Vanity & mirror (About) */}
@@ -194,6 +201,7 @@ const MakeoverRoom: React.FC = () => {
         width={getResponsiveSize("8%")}
         height={getResponsiveSize("8%")}
         route="/coat-hanger"
+        disabled={true}
       />
 
         {/* Center dress (Gallery) */}
@@ -247,6 +255,7 @@ const MakeoverRoom: React.FC = () => {
         height={getResponsiveSize("6%")}
         route="/"
         zIndex={3}
+        disabled={true}
       />
 
         {/* Mannequins (education history) */}
