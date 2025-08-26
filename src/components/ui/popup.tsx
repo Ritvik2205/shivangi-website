@@ -79,7 +79,19 @@ const IMAGE_FOLDERS: Record<string, string[]> = {
   awards: [
     "/lovable-uploads/extracurriculars/awards/edinburgh%20award.png"
   ],
-  writing: []
+  writing: [],
+  jumping_jack: [
+    "/lovable-uploads/projects/jumpingjack/1.png",
+    "/lovable-uploads/projects/jumpingjack/2.png",
+  ],
+  space_competition: [
+    "/lovable-uploads/projects/spacecompetition/Experiment.png",
+    "/lovable-uploads/projects/spacecompetition/teamSolaris.png",
+  ],
+  ny_academy: [
+    "/lovable-uploads/projects/NewYorkAcademyofSciences/1.png",
+    "/lovable-uploads/projects/NewYorkAcademyofSciences/2.png",
+  ]
 };
 
 const Popup: React.FC<PopupProps> = ({
