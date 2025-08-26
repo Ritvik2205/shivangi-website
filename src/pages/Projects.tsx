@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button";
 import { ArrowLeft } from "lucide-react";
 import PopupItem from "@/components/PopupItem";
 import Popup from "@/components/ui/popup";
+import Notification from "@/components/ui/notification";
 
 const Projects = () => {
   const [popupData, setPopupData] = useState<{
@@ -127,6 +128,10 @@ const Projects = () => {
             </Button>
           </Link>
 
+          <div className="text-center">
+              <h1 className="mb-4 heading-font">My Projects</h1>
+          </div>
+
           <div 
             className="absolute bottom-0 left-0 w-full" 
             style={{ 
@@ -185,6 +190,12 @@ const Projects = () => {
         description={popupData.description}
         imageFolder={popupData.imageFolder}
         imageAlt={popupData.imageAlt}
+      />
+      
+      {/* Notification */}
+      <Notification 
+        elementToClick="desktop icons" 
+        contentToView="detailed project information"
       />
     </div>
   );

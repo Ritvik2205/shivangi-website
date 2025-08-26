@@ -68,7 +68,6 @@ const BlogPopup: React.FC<BlogPopupProps> = ({
                 {/* Title */}
                 <h1 className="text-3xl font-bold text-[#775320] mb-2 leading-tight" 
                     style={{ 
-                      fontFamily: 'sans-serif',
                       textShadow: '1px 1px 2px rgba(74, 74, 74, 0.1)',
                       lineHeight: '1.7',
                       fontSize: '2rem',
@@ -77,7 +76,7 @@ const BlogPopup: React.FC<BlogPopupProps> = ({
                 </h1>
                 
                 {/* Meta Information */}
-                <div className="text-sm text-[#8A8A8A]" style={{ fontFamily: 'sans-serif' }}>
+                <div className="text-sm text-[#8A8A8A]">
                   By {author} • {date} • {readTime}
                 </div>
               </div>
@@ -97,7 +96,6 @@ const BlogPopup: React.FC<BlogPopupProps> = ({
             <div className="prose prose-lg max-w-none">
               <div className="text-base text-[#775320] leading-relaxed space-y-4" 
                    style={{ 
-                     fontFamily: 'Inter, sans-serif', 
                      lineHeight: '1.8',
                      fontSize: '1.1rem',
                      fontWeight: '500',

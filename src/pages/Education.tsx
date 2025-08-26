@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button";
 import { ArrowLeft } from "lucide-react";
 import PopupItem from "@/components/PopupItem";
 import Popup from "@/components/ui/popup";
+import Notification from "@/components/ui/notification";
 
 const Education = () => {
   const [popupData, setPopupData] = useState<{
@@ -119,7 +120,7 @@ const Education = () => {
           
           <div className="space-y-8 flex flex-col items-center justify-center">
             <div className="text-center">
-              <h1 className="text-4xl font-bold mb-4">Education History</h1>
+              <h1 className="mb-4 heading-font">Education History</h1>
             </div>
             <div className="relative flex justify-center mb-12 z-[10] top-[2%] min-w-[65vw] min-h-[50vh] w-full h-full">
               <div className="w-full h-full relative">
@@ -171,6 +172,12 @@ const Education = () => {
         description={popupData.description}
         imageFolder={popupData.imageFolder}
         imageAlt={popupData.imageAlt}
+      />
+      
+      {/* Notification */}
+      <Notification 
+        elementToClick="bookmarks" 
+        contentToView="my education history"
       />
     </div>
   );

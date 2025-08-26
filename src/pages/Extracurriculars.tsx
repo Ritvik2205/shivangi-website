@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button";
 import { ArrowLeft } from "lucide-react";
 import PopupItem from "@/components/PopupItem";
 import Popup from "@/components/ui/popup";
+import Notification from "@/components/ui/notification";
 
 const Extracurriculars = () => {
   const [popupData, setPopupData] = useState<{
@@ -189,6 +190,10 @@ const Extracurriculars = () => {
             </Button>
           </Link>
 
+          <div className="text-center">
+              <h1 className="mb-4 heading-font text-white">My Extracurriculars</h1>
+          </div>
+
           <div className="relative flex justify-center mb-12 z-[10] top-[10%] w-full h-full">
             <div className="w-full h-[90%]">
               <img 
@@ -237,6 +242,12 @@ const Extracurriculars = () => {
         description={popupData.description}
         imageFolder={popupData.imageFolder}
         imageAlt={popupData.imageAlt}
+      />
+      
+      {/* Notification */}
+      <Notification 
+        elementToClick="shelf items" 
+        contentToView="extracurricular activities and achievements"
       />
     </div>
   );

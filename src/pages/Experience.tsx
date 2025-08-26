@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button";
 import { ArrowLeft } from "lucide-react";
 import PopupItem from "@/components/PopupItem";
 import Popup from "@/components/ui/popup";
+import Notification from "@/components/ui/notification";
 
 const Experience = () => {
   const [scale, setScale] = useState(1);
@@ -154,6 +155,10 @@ const Experience = () => {
               }}
             >
 
+            <div className="text-center mt-10">
+              <h1 className="mb-4 heading-font">My Experience</h1>
+            </div>
+
           <div 
             className="absolute bottom-0 left-0 w-full" 
             style={{ 
@@ -211,6 +216,12 @@ const Experience = () => {
         description={popupData.description}
         imageFolder={popupData.imageFolder}
         imageAlt={popupData.imageAlt}
+      />
+      
+      {/* Notification */}
+      <Notification 
+        elementToClick="clothing items on the hangers" 
+        contentToView="my work experience"
       />
     </div>
   );
