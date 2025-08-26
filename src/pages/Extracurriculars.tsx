@@ -39,12 +39,7 @@ const Extracurriculars = () => {
   type Position = { top?: string; left?: string; right?: string; bottom?: string; transform?: boolean };
   type Entry = {
     title: string;
-    details?: string[];
-    subsections?: Array<{
-      organization: string;
-      role?: string;
-      details?: string[];
-    }>;
+    content: string;
   };
 
   const [entries, setEntries] = useState<Entry[]>([]);
@@ -177,16 +172,8 @@ const Extracurriculars = () => {
   };
 
   const buildDescription = (entry: Entry): string => {
-    if (entry.subsections && entry.subsections.length > 0) {
-      const blocks = entry.subsections.map((s) => {
-        const header = `${s.organization}${s.role ? " — " + s.role : ""}`;
-        const detailLines = (s.details || []).map(d => `- ${d}`).join("\n");
-        return detailLines ? `${header}\n${detailLines}` : header;
-      });
-      return blocks.join("\n\n");
-    }
-    if (entry.details && entry.details.length > 0) {
-      return entry.details.map(d => `- ${d}`).join("\n");
+    if (entry.content && entry.content.length > 0) {
+      return entry.content;
     }
     return "";
   };
@@ -224,7 +211,7 @@ const Extracurriculars = () => {
                       position={cfg.position}
                       width={cfg.width}
                       height={cfg.height}
-                      description={entry.details && entry.details.length > 0 ? entry.details[0] : undefined}
+                      description={entry.content}
                       onOpenPopup={() => openPopup({
                         title: entry.title,
                         description: buildDescription(entry),

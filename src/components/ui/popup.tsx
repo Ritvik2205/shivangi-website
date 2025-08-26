@@ -13,12 +13,6 @@ interface PopupProps {
 
 // Predefined image mappings for different folders
 const IMAGE_FOLDERS: Record<string, string[]> = {
-  wardrobe: [
-    "/lovable-uploads/wardrobe/dress_black.svg",
-    "/lovable-uploads/wardrobe/dress_white.svg",
-    "/lovable-uploads/wardrobe/coat_grey.svg",
-    "/lovable-uploads/wardrobe/coat_blue.svg"
-  ],
   extracurricular_shelf: [
     "/lovable-uploads/extracurricular_shelf/writing.svg",
     "/lovable-uploads/extracurricular_shelf/trophy.svg",
@@ -63,16 +57,15 @@ const IMAGE_FOLDERS: Record<string, string[]> = {
     "/lovable-uploads/extracurriculars/leadership/5.png"
   ],
   cooking: [
-    "/lovable-uploads/extracurriculars/cooking/IMG_1017.jpeg",
-    "/lovable-uploads/extracurriculars/cooking/IMG_1405.png",
-    "/lovable-uploads/extracurriculars/cooking/IMG_1406.png",
-    "/lovable-uploads/extracurriculars/cooking/IMG_1407.png",
-    "/lovable-uploads/extracurriculars/cooking/IMG_1408.png"
+    "/lovable-uploads/extracurriculars/cooking/1.png",
+    "/lovable-uploads/extracurriculars/cooking/2.png",
+    "/lovable-uploads/extracurriculars/cooking/3.png",
+    "/lovable-uploads/extracurriculars/cooking/4.png"
   ],
   crafts: [
-    "/lovable-uploads/extracurriculars/crafts/IMG_1400.png",
-    "/lovable-uploads/extracurriculars/crafts/IMG_20181215_181534.jpg",
-    "/lovable-uploads/extracurriculars/crafts/OTSH3938.JPG"
+    "/lovable-uploads/extracurriculars/crafts/1.png",
+    "/lovable-uploads/extracurriculars/crafts/2.png",
+    "/lovable-uploads/extracurriculars/crafts/3.png"
   ],
   hiking: [
     "/lovable-uploads/extracurriculars/hiking/IMG_8931%20(1).jpeg"
@@ -253,7 +246,7 @@ const Popup: React.FC<PopupProps> = ({
                 <img 
                   src={images[currentImageIndex]} 
                   alt={`${imageAlt} ${currentImageIndex + 1}`}
-                  className={`w-auto max-w-[70%] h-64 object-contain rounded-[20px] border-white border-[5px] ${
+                  className={`w-auto min-h-[20vh] max-h-[50vh] object-contain rounded-[20px] border-white border-[5px] ${
                     isTransitioning ? 'image-transition' : ''
                   }`}
                 />

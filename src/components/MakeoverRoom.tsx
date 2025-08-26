@@ -205,7 +205,7 @@ const MakeoverRoom: React.FC = () => {
         position={{ top: "37%", left: "50%", transform: true }}
         width={getResponsiveSize("30%")}
         height={getResponsiveSize("30%")}
-        route="/gallery"
+        route="/experience"
         zIndex={3}
       />
 
@@ -249,7 +249,7 @@ const MakeoverRoom: React.FC = () => {
         zIndex={3}
       />
 
-        {/* Mannequins (Projects) */}
+        {/* Mannequins (education history) */}
       <ClickableItem
         label="Projects"
         description="Recent collaborations and highlights."
@@ -258,7 +258,7 @@ const MakeoverRoom: React.FC = () => {
         position={{ top: "28%", right: "0" }}
         width={getResponsiveSize("25%")}
         height={getResponsiveSize("25%")}
-        route="/projects"
+        route="/education"
       />
 
         {/* Accessory shelf (Services) */}

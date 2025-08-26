@@ -14,6 +14,7 @@ interface PopupItemProps {
   disableDropShadow?: boolean; // disable drop shadow on the image
   zIndex?: number; // custom z-index for layering
   disabled?: boolean; // make the component non-clickable
+  flip?: boolean; // horizontally flip the image
 }
 
 const PopupItem: React.FC<PopupItemProps> = ({ 
@@ -27,7 +28,8 @@ const PopupItem: React.FC<PopupItemProps> = ({
   onOpenPopup, 
   disableDropShadow = false, 
   zIndex, 
-  disabled = false 
+  disabled = false,
+  flip = false
 }) => {
   const handleClick = () => {
     if (!disabled) {
@@ -65,7 +67,7 @@ const PopupItem: React.FC<PopupItemProps> = ({
           src={src}
           alt={alt}
           loading="lazy"
-          className={`w-full h-auto select-none pointer-events-none ${!disableDropShadow ? 'drop-shadow-md' : ''}`}
+          className={`w-full h-auto select-none pointer-events-none ${!disableDropShadow ? 'drop-shadow-md' : ''} ${flip ? 'scale-x-[-1]' : ''}`}
         />
         <span className="sr-only">{label}</span>
       </button>
