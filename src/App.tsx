@@ -5,7 +5,7 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import CurtainLoader from "@/components/ui/curtain-loader";
 import Index from "./pages/Index";
-import About from "./pages/About";
+import Blog from "./pages/Blog";
 import Gallery from "./pages/Gallery";
 import Projects from "./pages/Projects";
 import Extracurriculars from "./pages/Extracurriculars";
@@ -23,10 +23,10 @@ const App = () => (
       <Toaster />
       <Sonner />
       <BrowserRouter>
-        <CurtainLoader>
+        {/* <CurtainLoader> */}
           <Routes>
             <Route path="/" element={<Index />} />
-            <Route path="/about" element={<About />} />
+            <Route path="/blog" element={<Blog />} />
             <Route path="/gallery" element={<Gallery />} />
             <Route path="/projects" element={<Projects />} />
             <Route path="/extracurriculars" element={<Extracurriculars />} />
@@ -37,7 +37,7 @@ const App = () => (
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
             <Route path="*" element={<NotFound />} />
           </Routes>
-        </CurtainLoader>
+        {/* </CurtainLoader> */}
       </BrowserRouter>
     </TooltipProvider>
   </QueryClientProvider>

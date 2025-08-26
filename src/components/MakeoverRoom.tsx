@@ -181,7 +181,7 @@ const MakeoverRoom: React.FC = () => {
         position={{ top: "27%", left: "0" }}
         width={getResponsiveSize("23%")}
         height={getResponsiveSize("23%")}
-        route="/about"
+        route="/blog"
       />
 
         {/* Coat hanger */}
