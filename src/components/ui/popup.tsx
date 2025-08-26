@@ -1,5 +1,5 @@
-import React, { useEffect } from "react";
-import { X } from "lucide-react";
+import React, { useEffect, useState } from "react";
+import { X, ChevronLeft, ChevronRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 interface PopupProps {
@@ -7,24 +7,64 @@ interface PopupProps {
   onClose: () => void;
   title: string;
   description: string;
-  imageSrc: string;
+  imageFolder: string; // Folder identifier (e.g., "wardrobe", "extracurricular_shelf", "blog")
   imageAlt: string;
-  details: {
-    style: string;
-    color: string;
-    occasion: string;
-  };
 }
+
+// Predefined image mappings for different folders
+const IMAGE_FOLDERS: Record<string, string[]> = {
+  wardrobe: [
+    "/lovable-uploads/wardrobe/dress_black.svg",
+    "/lovable-uploads/wardrobe/dress_white.svg",
+    "/lovable-uploads/wardrobe/coat_grey.svg",
+    "/lovable-uploads/wardrobe/coat_blue.svg"
+  ],
+  extracurricular_shelf: [
+    "/lovable-uploads/extracurricular_shelf/writing.svg",
+    "/lovable-uploads/extracurricular_shelf/trophy.svg",
+    "/lovable-uploads/extracurricular_shelf/travel.svg",
+    "/lovable-uploads/extracurricular_shelf/hiking.svg",
+    "/lovable-uploads/extracurricular_shelf/debate.svg",
+    "/lovable-uploads/extracurricular_shelf/crafts.svg",
+    "/lovable-uploads/extracurricular_shelf/cooking.svg",
+    "/lovable-uploads/extracurricular_shelf/company.svg",
+    "/lovable-uploads/extracurricular_shelf/chess.svg",
+    "/lovable-uploads/extracurricular_shelf/basketball.svg"
+  ],
+  blog: [
+    "/lovable-uploads/blog-page.svg",
+    "/lovable-uploads/blog-icon.svg"
+  ],
+  dummy: [
+    "/lovable-uploads/placeholder.svg",
+    "/lovable-uploads/room_bg.svg",
+    "/lovable-uploads/clock.svg",
+    "/lovable-uploads/rug.svg",
+    "/lovable-uploads/chair.svg",
+    "/lovable-uploads/coat_hanger.svg"
+  ]
+};
 
 const Popup: React.FC<PopupProps> = ({
   isOpen,
   onClose,
   title,
   description,
-  imageSrc,
-  imageAlt,
-  details
+  imageFolder,
+  imageAlt
 }) => {
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
+  const [images, setImages] = useState<string[]>([]);
+
+  // Load images from the folder
+  useEffect(() => {
+    if (isOpen && imageFolder) {
+      const folderImages = IMAGE_FOLDERS[imageFolder] || [];
+      setImages(folderImages);
+      setCurrentImageIndex(0); // Reset to first image when popup opens
+    }
+  }, [isOpen, imageFolder]);
+
   // Close popup on escape key
   useEffect(() => {
     const handleEscape = (event: KeyboardEvent) => {
@@ -44,6 +84,18 @@ const Popup: React.FC<PopupProps> = ({
       document.body.style.overflow = 'unset';
     };
   }, [isOpen, onClose]);
+
+  const nextImage = () => {
+    setCurrentImageIndex((prev) => 
+      prev === images.length - 1 ? 0 : prev + 1
+    );
+  };
+
+  const prevImage = () => {
+    setCurrentImageIndex((prev) => 
+      prev === 0 ? images.length - 1 : prev - 1
+    );
+  };
 
   if (!isOpen) return null;
 
@@ -69,42 +121,67 @@ const Popup: React.FC<PopupProps> = ({
 
         {/* Content */}
         <div className="p-8">
-          {/* Image */}
-          <div className="flex justify-center mb-6">
-            <img 
-              src={imageSrc} 
-              alt={imageAlt}
-              className="w-[60%] h-auto object-contain"
-            />
-          </div>
+          {/* Image Carousel */}
+          {images.length > 0 && (
+            <div className="relative mb-6">
+              <div className="flex justify-center items-center">
+                <img 
+                  src={images[currentImageIndex]} 
+                  alt={`${imageAlt} ${currentImageIndex + 1}`}
+                  className="w-full h-64 object-contain rounded-lg"
+                />
+              </div>
+              
+              {/* Carousel Navigation */}
+              {images.length > 1 && (
+                <>
+                  <Button
+                    variant="ghost"
+                    size="sm"
+                    onClick={prevImage}
+                    className="absolute left-2 top-1/2 transform -translate-y-1/2 bg-white/80 hover:bg-white rounded-full p-2"
+                  >
+                    <ChevronLeft className="h-5 w-5" />
+                  </Button>
+                  
+                  <Button
+                    variant="ghost"
+                    size="sm"
+                    onClick={nextImage}
+                    className="absolute right-2 top-1/2 transform -translate-y-1/2 bg-white/80 hover:bg-white rounded-full p-2"
+                  >
+                    <ChevronRight className="h-5 w-5" />
+                  </Button>
+                  
+                  {/* Image Indicators */}
+                  <div className="flex justify-center mt-4 space-x-2">
+                    {images.map((_, index) => (
+                      <button
+                        key={index}
+                        onClick={() => setCurrentImageIndex(index)}
+                        className={`w-2 h-2 rounded-full transition-colors ${
+                          index === currentImageIndex 
+                            ? 'bg-blue-600' 
+                            : 'bg-gray-300 hover:bg-gray-400'
+                        }`}
+                      />
+                    ))}
+                  </div>
+                </>
+              )}
+            </div>
+          )}
 
           {/* Title */}
           <h2 className="text-3xl font-bold text-gray-800 mb-4 text-center">
             {title}
           </h2>
 
-          {/* Description */}
-          <p className="text-lg text-gray-600 mb-6 text-center leading-relaxed">
-            {description}
-          </p>
-
-          {/* Details */}
+          {/* Description Text Block */}
           <div className="bg-gray-50 rounded-lg p-6">
-            <h3 className="text-xl font-semibold text-gray-800 mb-4">Details</h3>
-            <div className="space-y-3">
-              <div className="flex justify-between">
-                <span className="font-medium text-gray-700">Style:</span>
-                <span className="text-gray-600">{details.style}</span>
-              </div>
-              <div className="flex justify-between">
-                <span className="font-medium text-gray-700">Color:</span>
-                <span className="text-gray-600">{details.color}</span>
-              </div>
-              <div className="flex justify-between">
-                <span className="font-medium text-gray-700">Occasion:</span>
-                <span className="text-gray-600">{details.occasion}</span>
-              </div>
-            </div>
+            <p className="text-lg text-gray-600 leading-relaxed">
+              {description}
+            </p>
           </div>
         </div>
       </div>

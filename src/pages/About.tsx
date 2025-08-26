@@ -10,24 +10,21 @@ const About = () => {
     isOpen: boolean;
     title: string;
     description: string;
-    imageSrc: string;
+    imageFolder: string;
     imageAlt: string;
-    details: { style: string; color: string; occasion: string };
   }>({
     isOpen: false,
     title: "",
     description: "",
-    imageSrc: "",
-    imageAlt: "",
-    details: { style: "", color: "", occasion: "" }
+    imageFolder: "",
+    imageAlt: ""
   });
 
   const openPopup = (data: {
     title: string;
     description: string;
-    imageSrc: string;
+    imageFolder: string;
     imageAlt: string;
-    details: { style: string; color: string; occasion: string };
   }) => {
     setPopupData({
       isOpen: true,
@@ -91,13 +88,8 @@ const About = () => {
                   onOpenPopup={() => openPopup({
                     title: "Design Trends 2024",
                     description: "Exploring the latest design trends and how they're shaping the future of digital experiences. From minimalist aesthetics to bold color palettes, discover what's driving innovation in design.",
-                    imageSrc: "/lovable-uploads/blog-icon.svg",
-                    imageAlt: "Blog Icon 1",
-                    details: {
-                      style: "Design Article",
-                      color: "Multi-color",
-                      occasion: "Industry Insights"
-                    }
+                    imageFolder: "blog",
+                    imageAlt: "Blog Icon 1"
                   })}
                   zIndex={20}
                 />
@@ -113,13 +105,8 @@ const About = () => {
                   onOpenPopup={() => openPopup({
                     title: "Development Best Practices",
                     description: "A comprehensive guide to modern development practices, covering everything from code organization to performance optimization. Learn the techniques that make projects scalable and maintainable.",
-                    imageSrc: "/lovable-uploads/blog-icon.svg",
-                    imageAlt: "Blog Icon 2",
-                    details: {
-                      style: "Technical Guide",
-                      color: "Multi-color",
-                      occasion: "Learning & Development"
-                    }
+                    imageFolder: "blog",
+                    imageAlt: "Blog Icon 2"
                   })}
                   zIndex={20}
                 />
@@ -135,13 +122,8 @@ const About = () => {
                   onOpenPopup={() => openPopup({
                     title: "Creative Process Deep Dive",
                     description: "Behind the scenes of my creative process - from initial concept to final execution. Discover how I approach problem-solving and bring ideas to life through design and development.",
-                    imageSrc: "/lovable-uploads/blog-icon.svg",
-                    imageAlt: "Blog Icon 3",
-                    details: {
-                      style: "Process Article",
-                      color: "Multi-color",
-                      occasion: "Creative Insights"
-                    }
+                    imageFolder: "blog",
+                    imageAlt: "Blog Icon 3"
                   })}
                   zIndex={20}
                 />
@@ -158,13 +140,8 @@ const About = () => {
                   onOpenPopup={() => openPopup({
                     title: "User Experience Fundamentals",
                     description: "Understanding the core principles of user experience design and how they impact user engagement. Learn how to create intuitive, accessible, and delightful digital experiences.",
-                    imageSrc: "/lovable-uploads/blog-icon.svg",
-                    imageAlt: "Blog Icon 4",
-                    details: {
-                      style: "UX Article",
-                      color: "Multi-color",
-                      occasion: "User Experience"
-                    }
+                    imageFolder: "blog",
+                    imageAlt: "Blog Icon 4"
                   })}
                   zIndex={20}
                 />
@@ -180,13 +157,8 @@ const About = () => {
                   onOpenPopup={() => openPopup({
                     title: "Project Showcase",
                     description: "A detailed look at some of my favorite projects, including the challenges faced, solutions implemented, and lessons learned. See how theory translates into practice.",
-                    imageSrc: "/lovable-uploads/blog-icon.svg",
-                    imageAlt: "Blog Icon 5",
-                    details: {
-                      style: "Case Study",
-                      color: "Multi-color",
-                      occasion: "Project Portfolio"
-                    }
+                    imageFolder: "blog",
+                    imageAlt: "Blog Icon 5"
                   })}
                   zIndex={20}
                 />
@@ -202,13 +174,8 @@ const About = () => {
                   onOpenPopup={() => openPopup({
                     title: "Future of Web Development",
                     description: "Exploring emerging technologies and trends that are shaping the future of web development. From AI integration to new frameworks, discover what's next in the digital landscape.",
-                    imageSrc: "/lovable-uploads/blog-icon.svg",
-                    imageAlt: "Blog Icon 6",
-                    details: {
-                      style: "Future Trends",
-                      color: "Multi-color",
-                      occasion: "Technology Insights"
-                    }
+                    imageFolder: "blog",
+                    imageAlt: "Blog Icon 6"
                   })}
                   zIndex={20}
                 />
@@ -224,9 +191,8 @@ const About = () => {
         onClose={closePopup}
         title={popupData.title}
         description={popupData.description}
-        imageSrc={popupData.imageSrc}
+        imageFolder={popupData.imageFolder}
         imageAlt={popupData.imageAlt}
-        details={popupData.details}
       />
     </div>
   );

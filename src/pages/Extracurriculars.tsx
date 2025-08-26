@@ -10,24 +10,21 @@ const Extracurriculars = () => {
     isOpen: boolean;
     title: string;
     description: string;
-    imageSrc: string;
+    imageFolder: string;
     imageAlt: string;
-    details: { style: string; color: string; occasion: string };
   }>({
     isOpen: false,
     title: "",
     description: "",
-    imageSrc: "",
-    imageAlt: "",
-    details: { style: "", color: "", occasion: "" }
+    imageFolder: "",
+    imageAlt: ""
   });
 
   const openPopup = (data: {
     title: string;
     description: string;
-    imageSrc: string;
+    imageFolder: string;
     imageAlt: string;
-    details: { style: string; color: string; occasion: string };
   }) => {
     setPopupData({
       isOpen: true,
@@ -117,13 +114,8 @@ const Extracurriculars = () => {
                   onOpenPopup={() => openPopup({
                     title: "Creative Writing",
                     description: "Passionate about storytelling and creative expression through writing. I enjoy crafting narratives, poetry, and exploring different writing styles to communicate ideas effectively.",
-                    imageSrc: "/lovable-uploads/extracurricular_shelf/writing.svg",
-                    imageAlt: "Writing",
-                    details: {
-                      style: "Creative Expression",
-                      color: "Multi-color",
-                      occasion: "Personal Development"
-                    }
+                    imageFolder: "dummy",
+                    imageAlt: "Writing"
                   })}
                   zIndex={20}
                 />
@@ -139,13 +131,8 @@ const Extracurriculars = () => {
                   onOpenPopup={() => openPopup({
                     title: "Chess Strategy",
                     description: "Dedicated chess player who enjoys the strategic depth and mental challenges of the game. Chess has taught me patience, planning, and the importance of thinking several moves ahead.",
-                    imageSrc: "/lovable-uploads/extracurricular_shelf/chess.svg",
-                    imageAlt: "Chess",
-                    details: {
-                      style: "Strategic Game",
-                      color: "Multi-color",
-                      occasion: "Mental Exercise"
-                    }
+                    imageFolder: "dummy",
+                    imageAlt: "Chess"
                   })}
                   zIndex={20}
                 />
@@ -161,13 +148,8 @@ const Extracurriculars = () => {
                   onOpenPopup={() => openPopup({
                     title: "Basketball",
                     description: "Active basketball player who values teamwork, coordination, and physical fitness. The sport has helped me develop leadership skills and the ability to work effectively in team environments.",
-                    imageSrc: "/lovable-uploads/extracurricular_shelf/basketball.svg",
-                    imageAlt: "Basketball",
-                    details: {
-                      style: "Team Sport",
-                      color: "Multi-color",
-                      occasion: "Physical Activity"
-                    }
+                    imageFolder: "dummy",
+                    imageAlt: "Basketball"
                   })}
                   zIndex={20}
                 />
@@ -183,13 +165,8 @@ const Extracurriculars = () => {
                   onOpenPopup={() => openPopup({
                     title: "Culinary Arts",
                     description: "Passionate home chef who loves experimenting with flavors and techniques. Cooking is both a creative outlet and a way to bring people together through shared meals and experiences.",
-                    imageSrc: "/lovable-uploads/extracurricular_shelf/cooking.svg",
-                    imageAlt: "Cooking",
-                    details: {
-                      style: "Culinary Art",
-                      color: "Multi-color",
-                      occasion: "Creative Expression"
-                    }
+                    imageFolder: "extracurricular_shelf",
+                    imageAlt: "Cooking"
                   })}
                   zIndex={20}
                 />
@@ -206,13 +183,8 @@ const Extracurriculars = () => {
                   onOpenPopup={() => openPopup({
                     title: "Public Speaking & Debate",
                     description: "Experienced debater and public speaker who enjoys engaging in intellectual discourse and presenting compelling arguments. This activity has sharpened my critical thinking and communication skills.",
-                    imageSrc: "/lovable-uploads/extracurricular_shelf/debate.svg",
-                    imageAlt: "Debate",
-                    details: {
-                      style: "Intellectual Discourse",
-                      color: "Multi-color",
-                      occasion: "Academic Development"
-                    }
+                    imageFolder: "dummy",
+                    imageAlt: "Debate"
                   })}
                   zIndex={20}
                 />
@@ -228,13 +200,8 @@ const Extracurriculars = () => {
                   onOpenPopup={() => openPopup({
                     title: "Arts & Crafts",
                     description: "Creative artist who enjoys working with various materials and techniques. From painting to DIY projects, crafting allows me to express creativity and create unique, handmade pieces.",
-                    imageSrc: "/lovable-uploads/extracurricular_shelf/crafts.svg",
-                    imageAlt: "Crafts",
-                    details: {
-                      style: "Handmade Art",
-                      color: "Multi-color",
-                      occasion: "Creative Hobby"
-                    }
+                    imageFolder: "dummy",
+                    imageAlt: "Crafts"
                   })}
                   zIndex={20}
                 />
@@ -250,13 +217,8 @@ const Extracurriculars = () => {
                   onOpenPopup={() => openPopup({
                     title: "Travel & Exploration",
                     description: "Avid traveler who loves exploring new cultures, landscapes, and experiences. Travel has broadened my perspective and taught me adaptability, cultural sensitivity, and appreciation for diversity.",
-                    imageSrc: "/lovable-uploads/extracurricular_shelf/travel.svg",
-                    imageAlt: "Travel",
-                    details: {
-                      style: "Cultural Exploration",
-                      color: "Multi-color",
-                      occasion: "Personal Growth"
-                    }
+                    imageFolder: "dummy",
+                    imageAlt: "Travel"
                   })}
                   zIndex={20}
                 />
@@ -272,13 +234,8 @@ const Extracurriculars = () => {
                   onOpenPopup={() => openPopup({
                     title: "Hiking & Outdoor Adventures",
                     description: "Nature enthusiast who finds peace and challenge in outdoor activities. Hiking has taught me perseverance, appreciation for nature, and the importance of physical and mental resilience.",
-                    imageSrc: "/lovable-uploads/extracurricular_shelf/hiking.svg",
-                    imageAlt: "Hiking",
-                    details: {
-                      style: "Outdoor Activity",
-                      color: "Multi-color",
-                      occasion: "Nature Exploration"
-                    }
+                    imageFolder: "dummy",
+                    imageAlt: "Hiking"
                   })}
                   zIndex={20}
                 />
@@ -295,13 +252,8 @@ const Extracurriculars = () => {
                   onOpenPopup={() => openPopup({
                     title: "Entrepreneurship & Business",
                     description: "Entrepreneurial spirit with experience in business development and leadership. I enjoy building connections, solving problems, and creating value through innovative business solutions.",
-                    imageSrc: "/lovable-uploads/extracurricular_shelf/company.svg",
-                    imageAlt: "Company",
-                    details: {
-                      style: "Business Development",
-                      color: "Multi-color",
-                      occasion: "Professional Growth"
-                    }
+                    imageFolder: "dummy",
+                    imageAlt: "Company"
                   })}
                   zIndex={20}
                 />
@@ -317,13 +269,8 @@ const Extracurriculars = () => {
                   onOpenPopup={() => openPopup({
                     title: "Achievements & Awards",
                     description: "Proud recipient of various awards and recognitions for academic excellence, leadership, and community contributions. These achievements reflect my commitment to continuous improvement and making a positive impact.",
-                    imageSrc: "/lovable-uploads/extracurricular_shelf/trophy.svg",
-                    imageAlt: "Trophy",
-                    details: {
-                      style: "Recognition",
-                      color: "Multi-color",
-                      occasion: "Achievement Celebration"
-                    }
+                    imageFolder: "dummy",
+                    imageAlt: "Trophy"
                   })}
                   zIndex={20}
                 />
@@ -340,9 +287,8 @@ const Extracurriculars = () => {
         onClose={closePopup}
         title={popupData.title}
         description={popupData.description}
-        imageSrc={popupData.imageSrc}
+        imageFolder={popupData.imageFolder}
         imageAlt={popupData.imageAlt}
-        details={popupData.details}
       />
     </div>
   );

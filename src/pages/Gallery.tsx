@@ -11,16 +11,14 @@ const Gallery = () => {
     isOpen: boolean;
     title: string;
     description: string;
-    imageSrc: string;
+    imageFolder: string;
     imageAlt: string;
-    details: { style: string; color: string; occasion: string };
   }>({
     isOpen: false,
     title: "",
     description: "",
-    imageSrc: "",
-    imageAlt: "",
-    details: { style: "", color: "", occasion: "" }
+    imageFolder: "",
+    imageAlt: ""
   });
 
   // Base design resolution (keeps relative layout consistent)
@@ -43,9 +41,8 @@ const Gallery = () => {
   const openPopup = (data: {
     title: string;
     description: string;
-    imageSrc: string;
+    imageFolder: string;
     imageAlt: string;
-    details: { style: string; color: string; occasion: string };
   }) => {
     setPopupData({
       isOpen: true,
@@ -113,13 +110,8 @@ const Gallery = () => {
                   onOpenPopup={() => openPopup({
                     title: "Black Dress",
                     description: "Elegant black off-the-shoulder gown with a sweetheart neckline and high slit. Perfect for formal occasions and special events.",
-                    imageSrc: "/lovable-uploads/wardrobe/dress_black.svg",
-                    imageAlt: "Black Dress",
-                    details: {
-                      style: "Off-the-shoulder",
-                      color: "Black",
-                      occasion: "Formal Events"
-                    }
+                    imageFolder: "wardrobe",
+                    imageAlt: "Black Dress"
                   })}
                   zIndex={20}
                 />
@@ -136,13 +128,8 @@ const Gallery = () => {
                   onOpenPopup={() => openPopup({
                     title: "White Dress",
                     description: "Beautiful white halter-neck gown with a subtle textured pattern on the bodice and high slit. Perfect for weddings and elegant celebrations.",
-                    imageSrc: "/lovable-uploads/wardrobe/dress_white.svg",
-                    imageAlt: "White Dress",
-                    details: {
-                      style: "Halter-neck",
-                      color: "White",
-                      occasion: "Weddings & Celebrations"
-                    }
+                    imageFolder: "wardrobe",
+                    imageAlt: "White Dress"
                   })}
                   zIndex={20}
                 />
@@ -159,13 +146,8 @@ const Gallery = () => {
                   onOpenPopup={() => openPopup({
                     title: "Grey Coat",
                     description: "Professional grey blazer with three buttons and a dark grey undershirt. Perfect for business meetings and formal office settings.",
-                    imageSrc: "/lovable-uploads/wardrobe/coat_grey.svg",
-                    imageAlt: "Grey Coat",
-                    details: {
-                      style: "Blazer",
-                      color: "Grey",
-                      occasion: "Business & Office"
-                    }
+                    imageFolder: "wardrobe",
+                    imageAlt: "Grey Coat"
                   })}
                   zIndex={20}
                 />
@@ -182,13 +164,8 @@ const Gallery = () => {
                   onOpenPopup={() => openPopup({
                     title: "Blue Coat",
                     description: "Stylish blue blazer with two buttons and a lighter blue undershirt. Perfect for semi-formal events and stylish business casual looks.",
-                    imageSrc: "/lovable-uploads/wardrobe/coat_blue.svg",
-                    imageAlt: "Blue Coat",
-                    details: {
-                      style: "Blazer",
-                      color: "Blue",
-                      occasion: "Semi-formal & Business Casual"
-                    }
+                    imageFolder: "wardrobe",
+                    imageAlt: "Blue Coat"
                   })}
                   zIndex={20}
                 />
@@ -204,9 +181,8 @@ const Gallery = () => {
         onClose={closePopup}
         title={popupData.title}
         description={popupData.description}
-        imageSrc={popupData.imageSrc}
+        imageFolder={popupData.imageFolder}
         imageAlt={popupData.imageAlt}
-        details={popupData.details}
       />
     </div>
   );
