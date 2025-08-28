@@ -48,7 +48,7 @@ const ClickableItem: React.FC<ClickableItemProps> = ({ label, src, alt, position
         className={`w-full h-full group relative block rounded-lg focus:outline-none focus-visible:ring-2 focus-visible:ring-primary/60 transition-transform duration-200 ${
           disabled 
             ? 'cursor-default' 
-            : 'hover:scale-[1.02]'
+            : 'hover:scale-[1.1]'
         }`}
         title={disabled ? undefined : description}
       >

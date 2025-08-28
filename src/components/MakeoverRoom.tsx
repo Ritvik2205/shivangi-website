@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import ClickableItem from "@/components/ClickableItem";
+import Notification from "@/components/ui/notification";
 
 const MakeoverRoom: React.FC = () => {
   const [isDarkMode, setIsDarkMode] = useState(false);
@@ -187,7 +188,7 @@ const MakeoverRoom: React.FC = () => {
         alt="Vanity with ornate mirror"
         position={{ top: "27%", left: "0" }}
         width={getResponsiveSize("23%")}
-        height={getResponsiveSize("23%")}
+        height="max-content"
         route="/blog"
       />
 
@@ -210,9 +211,9 @@ const MakeoverRoom: React.FC = () => {
         description="Signature looks and transformations."
         src="/lovable-uploads/center_mannequin.svg"
         alt="Pink layered gown on dress form"
-        position={{ top: "37%", left: "50%", transform: true }}
+        position={{ top: "52%", left: "50%", transform: true }}
         width={getResponsiveSize("30%")}
-        height={getResponsiveSize("30%")}
+        height="max-content"
         route="/experience"
         zIndex={3}
       />
@@ -266,7 +267,7 @@ const MakeoverRoom: React.FC = () => {
         alt="Two mannequins with gowns"
         position={{ top: "28%", right: "0" }}
         width={getResponsiveSize("25%")}
-        height={getResponsiveSize("25%")}
+        height={getResponsiveSize("40%")}
         route="/education"
       />
 
@@ -278,7 +279,7 @@ const MakeoverRoom: React.FC = () => {
         alt="Shelf with jewelry, handbag and heels"
         position={{ top: "27%", right: "23%" }}
         width={getResponsiveSize("9%")}
-        height={getResponsiveSize("9%")}
+        height="max-content"
         route="/extracurriculars"
       />
 
@@ -303,7 +304,7 @@ const MakeoverRoom: React.FC = () => {
         alt="Sofa corner with cushion"
         position={{ top: "67%", left: "0" }}
         width={getResponsiveSize("13%")}
-        height={getResponsiveSize("13%")}
+        height="max-content"
         route="/projects"
       />
 
@@ -315,11 +316,17 @@ const MakeoverRoom: React.FC = () => {
         alt="Rug with hidden treasures"
         position={{ top: "91%", left: "50%", transform: true }}
         width={getResponsiveSize("30%")}
-        height={getResponsiveSize("30%")}
+        height="max-content"
         route="/contact"
       />
 
       </div>
+
+       {/* Notification */}
+       <Notification 
+        elementToClick="different attractions" 
+        contentToView="my life"
+      />
     </div>
   );
 };
