@@ -190,6 +190,7 @@ const MakeoverRoom: React.FC = () => {
         width={getResponsiveSize("23%")}
         height="max-content"
         route="/blog"
+        showPageTooltip={true}
       />
 
         {/* Coat hanger */}
@@ -215,7 +216,8 @@ const MakeoverRoom: React.FC = () => {
         width={getResponsiveSize("30%")}
         height="max-content"
         route="/experience"
-        zIndex={3}
+        zIndex={4}
+        showPageTooltip={true}
       />
 
         {/* Clock - Background Toggle */}
@@ -269,6 +271,7 @@ const MakeoverRoom: React.FC = () => {
         width={getResponsiveSize("25%")}
         height={getResponsiveSize("40%")}
         route="/education"
+        showPageTooltip={true}
       />
 
         {/* Accessory shelf (Services) */}
@@ -281,6 +284,7 @@ const MakeoverRoom: React.FC = () => {
         width={getResponsiveSize("9%")}
         height="max-content"
         route="/extracurriculars"
+        showPageTooltip={true}
       />
 
         {/* Sofa + gifts (Contact / Quote) */}
@@ -306,6 +310,7 @@ const MakeoverRoom: React.FC = () => {
         width={getResponsiveSize("13%")}
         height="max-content"
         route="/projects"
+        showPageTooltip={true}
       />
 
         {/* Rug (Rug Pull) */}
@@ -318,6 +323,8 @@ const MakeoverRoom: React.FC = () => {
         width={getResponsiveSize("30%")}
         height="max-content"
         route="/contact"
+        zIndex={5}
+        showPageTooltip={true}
       />
 
       </div>

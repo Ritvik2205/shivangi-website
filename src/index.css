@@ -101,6 +101,14 @@ All colors MUST be HSL.
     letter-spacing: 0.05em;
     text-align: center;
   }
+
+  .tooltip-font {
+    font-family: 'Berkshire Swash', cursive;
+    font-size: 1.2rem;
+    font-weight: 600;
+    line-height: 1.2;
+    letter-spacing: 0.05em;
+  }
 }
 
 @layer base {
