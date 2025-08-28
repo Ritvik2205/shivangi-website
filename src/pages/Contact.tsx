@@ -19,7 +19,7 @@ const Contact = () => {
             <div className="text-center">
               <h1 className="text-4xl font-bold mb-4">Contact</h1>
               <p className="text-xl text-muted-foreground">
-                Hit me up to have a chat!!!!
+                Hit me up to have a chat!!
               </p>
             </div>
             
@@ -57,7 +57,7 @@ const Contact = () => {
                     </div>
                     <div>
                       <p className="font-large">Currently wandering in</p>
-                      <p className="text-muted-foreground">Nanyang University Singapore</p>
+                      <p className="text-muted-foreground">National University Singapore</p>
                     </div>
                   </div>
                 </div>
