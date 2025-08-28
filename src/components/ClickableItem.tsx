@@ -81,10 +81,10 @@ const ClickableItem: React.FC<ClickableItemProps> = ({ label, src, alt, position
         {/* Page Tooltip */}
         {showPageTooltip && !disabled && (
           <div className="absolute min-w-max w-[10vw] h-[5vh] -top-12 left-1/2 transform -translate-x-1/2 opacity-0 group-hover:opacity-100 transition-opacity duration-200 pointer-events-none z-5000">
-            <div className="tooltip-font flex items-center justify-center bg-[#FD8A8A] h-full text-black text-center px-3 py-1.5 rounded-lg shadow-lg whitespace-nowrap">
+            <div className="tooltip-font flex items-center justify-center bg-white h-full text-black text-center px-3 py-1.5 rounded-lg shadow-lg whitespace-nowrap">
               {getPageName(route)}
               {/* Arrow pointing down */}
-              <div className="absolute top-full left-1/2 transform -translate-x-1/2 w-0 h-0 border-l-8 border-r-8 border-t-8 border-transparent border-t-[#FD8A8A]"></div>
+              <div className="absolute top-full left-1/2 transform -translate-x-1/2 w-0 h-0 border-l-8 border-r-8 border-t-8 border-transparent border-t-white"></div>
             </div>
           </div>
         )}

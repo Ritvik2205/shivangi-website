@@ -19,7 +19,7 @@ const Contact = () => {
             <div className="text-center">
               <h1 className="text-4xl font-bold mb-4">Contact</h1>
               <p className="text-xl text-muted-foreground">
-                Get in touch for bookings and quotes
+                Hit me up to have a chat!!!!
               </p>
             </div>
             
@@ -28,63 +28,37 @@ const Contact = () => {
               <div className="space-y-6">
                 <div>
                   <h2 className="text-2xl font-semibold mb-4">Let's Connect</h2>
-                  <p className="text-muted-foreground leading-relaxed">
-                    Ready to transform your style and boost your confidence? 
-                    I'm here to help you look and feel your absolute best. 
-                    Get in touch to discuss your vision and book your session.
-                  </p>
                 </div>
                 
                 <div className="space-y-4">
                   <div className="flex items-center space-x-3">
-                    <div className="p-2 bg-primary/10 rounded-lg">
-                      <Mail className="h-5 w-5 text-primary" />
+                    <div className="p-2 bg-primary/10 rounded-xl">
+                      <Mail className="h-8 w-8 text-primary" />
                     </div>
                     <div>
-                      <p className="font-medium">Email</p>
-                      <p className="text-muted-foreground">hello@makeoverstudio.com</p>
+                      <p className="font-large">Email</p>
+                      <p className="text-muted-foreground">kamatpr5@gmail.com</p>
                     </div>
                   </div>
                   
                   <div className="flex items-center space-x-3">
-                    <div className="p-2 bg-primary/10 rounded-lg">
-                      <Phone className="h-5 w-5 text-primary" />
+                    <div className="p-2 bg-primary/10 rounded-xl">
+                      <Phone className="h-8 w-8 text-primary" />
                     </div>
                     <div>
-                      <p className="font-medium">Phone</p>
+                      <p className="font-large">Gossip girl?</p>
                       <p className="text-muted-foreground">+1 (555) 123-4567</p>
                     </div>
                   </div>
                   
                   <div className="flex items-center space-x-3">
-                    <div className="p-2 bg-primary/10 rounded-lg">
-                      <MapPin className="h-5 w-5 text-primary" />
+                    <div className="p-2 bg-primary/10 rounded-xl">
+                      <MapPin className="h-8 w-8 text-primary" />
                     </div>
                     <div>
-                      <p className="font-medium">Studio Location</p>
-                      <p className="text-muted-foreground">123 Fashion Ave, New York, NY 10001</p>
+                      <p className="font-large">Currently wandering in</p>
+                      <p className="text-muted-foreground">Nanyang University Singapore</p>
                     </div>
-                  </div>
-                  
-                  <div className="flex items-center space-x-3">
-                    <div className="p-2 bg-primary/10 rounded-lg">
-                      <Clock className="h-5 w-5 text-primary" />
-                    </div>
-                    <div>
-                      <p className="font-medium">Hours</p>
-                      <p className="text-muted-foreground">Tue-Sat: 9AM-7PM, Sun: 10AM-5PM</p>
-                    </div>
-                  </div>
-                </div>
-                
-                <div className="bg-card border rounded-lg p-6">
-                  <h3 className="font-semibold mb-3">Quick Response</h3>
-                  <p className="text-sm text-muted-foreground mb-4">
-                    I typically respond to inquiries within 24 hours during business days.
-                  </p>
-                  <div className="flex items-center space-x-2">
-                    <MessageCircle className="h-4 w-4 text-green-500" />
-                    <span className="text-sm text-green-600">Usually responds in 2-4 hours</span>
                   </div>
                 </div>
               </div>
@@ -143,25 +117,6 @@ const Contact = () => {
                   </div>
                   
                   <div>
-                    <label htmlFor="service" className="block text-sm font-medium mb-1">
-                      Service Interest
-                    </label>
-                    <select
-                      id="service"
-                      className="w-full px-3 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
-                    >
-                      <option value="">Select a service</option>
-                      <option value="personal-styling">Personal Styling</option>
-                      <option value="makeup-artistry">Makeup Artistry</option>
-                      <option value="photo-styling">Photo Styling</option>
-                      <option value="special-events">Special Events</option>
-                      <option value="group-sessions">Group Sessions</option>
-                      <option value="ongoing-coaching">Ongoing Coaching</option>
-                      <option value="custom">Custom Package</option>
-                    </select>
-                  </div>
-                  
-                  <div>
                     <label htmlFor="message" className="block text-sm font-medium mb-1">
                       Message
                     </label>
@@ -178,12 +133,6 @@ const Contact = () => {
                   </Button>
                 </form>
               </div>
-            </div>
-            
-            <div className="text-center">
-              <p className="text-muted-foreground">
-                Can't wait to help you create your perfect look!
-              </p>
             </div>
           </div>
         </div>
